@@ -1,0 +1,291 @@
+[2025-09-11T01:19:09.155+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-09-11T01:19:09.235+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.transform_data manual__2025-09-11T01:16:37.252135+00:00 [queued]>
+[2025-09-11T01:19:09.254+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.transform_data manual__2025-09-11T01:16:37.252135+00:00 [queued]>
+[2025-09-11T01:19:09.254+0000] {taskinstance.py:2865} INFO - Starting attempt 2 of 3
+[2025-09-11T01:19:09.291+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): transform_data> on 2025-09-11 01:16:37.252135+00:00
+[2025-09-11T01:19:09.309+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1988) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-09-11T01:19:09.314+0000] {standard_task_runner.py:72} INFO - Started process 1991 to run task
+[2025-09-11T01:19:09.322+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'Sue_books_data_pipeline', 'transform_data', 'manual__2025-09-11T01:16:37.252135+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpgqldgd43']
+[2025-09-11T01:19:09.327+0000] {standard_task_runner.py:105} INFO - Job 27: Subtask transform_data
+[2025-09-11T01:19:09.551+0000] {task_command.py:467} INFO - Running <TaskInstance: Sue_books_data_pipeline.transform_data manual__2025-09-11T01:16:37.252135+00:00 [running]> on host 77c98720bb84
+[2025-09-11T01:19:09.990+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='sadiquetimileyin@gmail.com' AIRFLOW_CTX_DAG_OWNER='sadique' AIRFLOW_CTX_DAG_ID='Sue_books_data_pipeline' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-09-11T01:16:37.252135+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-11T01:16:37.252135+00:00'
+[2025-09-11T01:19:09.998+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-09-11T01:19:10.002+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-09-11T01:19:10.002+0000] {logging_mixin.py:190} INFO - Current task name:transform_data state:running start_date:2025-09-11 01:19:09.236271+00:00
+[2025-09-11T01:19:10.002+0000] {logging_mixin.py:190} INFO - Dag name:Sue_books_data_pipeline and current dag run status:running
+[2025-09-11T01:19:10.003+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-09-11T01:19:10.351+0000] {tables.py:140} INFO - Data loaded successfully.
+[2025-09-11T01:19:10.368+0000] {tables.py:40} INFO - Users data cleaned successfully. Total records: 904
+[2025-09-11T01:19:10.435+0000] {tables.py:76} INFO - Transactions data cleaned successfully. Total records: 82678
+[2025-09-11T01:19:10.464+0000] {tables.py:100} INFO - Daily sales table created successfully. Total records: 732
+[2025-09-11T01:19:10.474+0000] {tables.py:148} INFO - Data cleaning and transformation complete.
+[2025-09-11T01:19:10.474+0000] {python.py:240} INFO - Done. Returned value was: {'users': shape: (904, 6)
+┌─────┬───────────────────┬───────────────────┬───────────────────┬─────────────┬──────────────────┐
+│ id  ┆ name              ┆ email             ┆ location          ┆ signup_date ┆ social_security_ │
+│ --- ┆ ---               ┆ ---               ┆ ---               ┆ ---         ┆ number           │
+│ i64 ┆ str               ┆ str               ┆ str               ┆ date        ┆ ---              │
+│     ┆                   ┆                   ┆                   ┆             ┆ i64              │
+╞═════╪═══════════════════╪═══════════════════╪═══════════════════╪═════════════╪══════════════════╡
+│ 2   ┆ Mr. Lawrence      ┆ jessica56@example ┆ Zacharyville, MD  ┆ 2022-09-23  ┆ 0                │
+│     ┆ Edwards           ┆ .org              ┆                   ┆             ┆                  │
+│ 3   ┆ Jerry Thomas      ┆ robertspatrick@ex ┆ Wrightburgh, GU   ┆ 2024-08-21  ┆ 336745124        │
+│     ┆                   ┆ ample.net         ┆                   ┆             ┆                  │
+│ 4   ┆ Shawn Jimenez     ┆ kathrynjimenez@ex ┆ South             ┆ 2025-08-19  ┆ 362070829        │
+│     ┆                   ┆ ample.net         ┆ Williambury, IL   ┆             ┆                  │
+│ 5   ┆ Stephen Pena MD   ┆ booneryan@example ┆ Kathrynstad, AZ   ┆ 2023-01-24  ┆ 411079344        │
+│     ┆                   ┆ .com              ┆                   ┆             ┆                  │
+│ 6   ┆ Juan Jones        ┆ rduran@example.ne ┆ East Theresafurt, ┆ 2025-06-13  ┆ 814449140        │
+│     ┆                   ┆ t                 ┆ MN                ┆             ┆                  │
+│ …   ┆ …                 ┆ …                 ┆ …                 ┆ …           ┆ …                │
+│ 940 ┆ Mckenzie Lopez    ┆ leahbarker@exampl ┆ Jenniferside, MD  ┆ 2022-11-30  ┆ 210609532        │
+│     ┆                   ┆ e.org             ┆                   ┆             ┆                  │
+│ 941 ┆ Autumn Sharp      ┆ danielle39@exampl ┆                   ┆ 2023-07-17  ┆ 188838143        │
+│     ┆                   ┆ e.net             ┆                   ┆             ┆                  │
+│ 942 ┆ John Nelson       ┆ jmedina@example.c ┆ West Davidfurt,   ┆ 2023-11-11  ┆ 564510054        │
+│     ┆                   ┆ om                ┆ GU                ┆             ┆                  │
+│ 943 ┆ Timothy Reilly    ┆ jdonovan@example. ┆ Williamchester,   ┆ 2021-03-27  ┆ 273077008        │
+│     ┆                   ┆ net               ┆ ID                ┆             ┆                  │
+│ 944 ┆ Karen Hughes      ┆ taylordavid@examp ┆ Port Chadville,   ┆ 2024-11-01  ┆ 549352088        │
+│     ┆                   ┆ le.org            ┆ OH                ┆             ┆                  │
+└─────┴───────────────────┴───────────────────┴───────────────────┴─────────────┴──────────────────┘, 'transactions': shape: (82_678, 5)
+┌────────────────┬─────────┬─────────┬────────┬─────────────────────┐
+│ transaction_id ┆ user_id ┆ book_id ┆ amount ┆ timestamp           │
+│ ---            ┆ ---     ┆ ---     ┆ ---    ┆ ---                 │
+│ i64            ┆ i64     ┆ i64     ┆ f64    ┆ datetime[μs]        │
+╞════════════════╪═════════╪═════════╪════════╪═════════════════════╡
+│ 84514          ┆ 657     ┆ 103     ┆ 10.74  ┆ 2023-09-04 21:58:06 │
+│ 60989          ┆ 657     ┆ 58      ┆ 9.95   ┆ 2023-09-04 22:05:06 │
+│ 6116           ┆ 134     ┆ 69      ┆ 18.34  ┆ 2023-09-04 21:51:33 │
+│ 64605          ┆ 643     ┆ 111     ┆ -15.9  ┆ 2023-09-04 22:10:39 │
+│ 47529          ┆ 293     ┆ 14      ┆ 20.2   ┆ 2023-09-04 22:20:00 │
+│ …              ┆ …       ┆ …       ┆ …      ┆ …                   │
+│ 100087         ┆ 157     ┆ 51      ┆ -33.32 ┆ 2025-09-21 17:32:35 │
+│ 100088         ┆ 346     ┆ 35      ┆ -18.69 ┆ 2025-07-14 13:49:08 │
+│ 100089         ┆ 68      ┆ 100     ┆ -29.76 ┆ 2025-01-04 01:29:02 │
+│ 100090         ┆ 177     ┆ 93      ┆ -22.34 ┆ 2025-06-08 09:28:22 │
+│ 100091         ┆ 132     ┆ 71      ┆ -26.41 ┆ 2025-01-29 14:07:14 │
+└────────────────┴─────────┴─────────┴────────┴─────────────────────┘, 'books': shape: (112, 9)
+┌─────────┬────────────┬────────────┬────────────┬───┬────────────┬────────────┬───────┬───────────┐
+│ book_id ┆ title      ┆ category   ┆ base_price ┆ … ┆ isbn       ┆ publicatio ┆ pages ┆ publisher │
+│ ---     ┆ ---        ┆ ---        ┆ ---        ┆   ┆ ---        ┆ n_year     ┆ ---   ┆ ---       │
+│ i64     ┆ str        ┆ str        ┆ f64        ┆   ┆ str        ┆ ---        ┆ i64   ┆ str       │
+│         ┆            ┆            ┆            ┆   ┆            ┆ i64        ┆       ┆           │
+╞═════════╪════════════╪════════════╪════════════╪═══╪════════════╪════════════╪═══════╪═══════════╡
+│ 1       ┆ The Great  ┆ Cooking    ┆ 15.44      ┆ … ┆ 978-0-18-1 ┆ 2007       ┆ 400   ┆ Hall PLC  │
+│         ┆ Adventure  ┆            ┆            ┆   ┆ 96001-0    ┆            ┆       ┆           │
+│ 2       ┆ Digital    ┆ Romance    ┆ 9.25       ┆ … ┆ 978-0-7940 ┆ 1996       ┆ 708   ┆ Lewis LLC │
+│         ┆ Transforma ┆            ┆            ┆   ┆ -2654-7    ┆            ┆       ┆           │
+│         ┆ tion Guide ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│ 3       ┆ Cooking    ┆ Non-Fictio ┆ 25.98      ┆ … ┆ 978-1-07-8 ┆ 1992       ┆ 180   ┆ Montgomer │
+│         ┆ Mastery    ┆ n          ┆            ┆   ┆ 16184-8    ┆            ┆       ┆ y,        │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Hensley   │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and Ray   │
+│ 4       ┆ The Silent ┆ Non-Fictio ┆ 17.8       ┆ … ┆ 978-0-316- ┆ 2022       ┆ 766   ┆ Clark-Ada │
+│         ┆ Observer   ┆ n          ┆            ┆   ┆ 47525-9    ┆            ┆       ┆ ms        │
+│ 5       ┆ Machine    ┆ Fiction    ┆ 17.97      ┆ … ┆ 978-0-276- ┆ 2024       ┆ 579   ┆ Underwood │
+│         ┆ Learning   ┆            ┆            ┆   ┆ 48350-9    ┆            ┆       ┆ LLC       │
+│         ┆ Fundamenta ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│         ┆ ls         ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│ …       ┆ …          ┆ …          ┆ …          ┆ … ┆ …          ┆ …          ┆ …     ┆ …         │
+│ 108     ┆ Investment ┆ Fiction    ┆ 10.84      ┆ … ┆ 978-0-7058 ┆ 2006       ┆ 332   ┆ Salazar   │
+│         ┆ Strategies ┆            ┆            ┆   ┆ -9578-1    ┆            ┆       ┆ Inc       │
+│ 109     ┆ Vue.js     ┆ Children   ┆ 14.65      ┆ … ┆ 978-1-6912 ┆ 2006       ┆ 189   ┆ Holmes,   │
+│         ┆ Mastery    ┆            ┆            ┆   ┆ 5-177-3    ┆            ┆       ┆ Anderson  │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and       │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Calderon  │
+│ 110     ┆ Love at    ┆ Non-Fictio ┆ 26.11      ┆ … ┆ 978-1-8018 ┆ 2012       ┆ 471   ┆ Donovan-P │
+│         ┆ First      ┆ n          ┆            ┆   ┆ 2-422-4    ┆            ┆       ┆ erez      │
+│         ┆ Sight      ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│ 111     ┆ The        ┆ Self-Help  ┆ 19.87      ┆ … ┆ 978-1-384- ┆ 2022       ┆ 268   ┆ Davidson, │
+│         ┆ Conspiracy ┆            ┆            ┆   ┆ 24981-0    ┆            ┆       ┆ Vargas    │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and       │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Carpenter │
+│ 112     ┆ Retirement ┆ Self-Help  ┆ 23.68      ┆ … ┆ 978-0-01-0 ┆ 2002       ┆ 410   ┆ Fowler,   │
+│         ┆ Planning   ┆            ┆            ┆   ┆ 94396-2    ┆            ┆       ┆ Jimenez   │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and       │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Burton    │
+└─────────┴────────────┴────────────┴────────────┴───┴────────────┴────────────┴───────┴───────────┘, 'daily_sales': shape: (732, 4)
+┌────────────┬────────────┬──────────────────┬──────────────┐
+│ date       ┆ revenue    ┆ num_transactions ┆ active_users │
+│ ---        ┆ ---        ┆ ---              ┆ ---          │
+│ date       ┆ f64        ┆ u32              ┆ u32          │
+╞════════════╪════════════╪══════════════════╪══════════════╡
+│ 2023-09-04 ┆ 290.7      ┆ 16               ┆ 12           │
+│ 2023-09-05 ┆ 902000.63  ┆ 104              ┆ 71           │
+│ 2023-09-06 ┆ 3.0021e6   ┆ 114              ┆ 84           │
+│ 2023-09-07 ┆ 902371.492 ┆ 125              ┆ 87           │
+│ 2023-09-08 ┆ 2.0022e6   ┆ 112              ┆ 78           │
+│ …          ┆ …          ┆ …                ┆ …            │
+│ 2025-08-31 ┆ 2.9519e6   ┆ 110              ┆ 78           │
+│ 2025-09-01 ┆ 951796.46  ┆ 99               ┆ 67           │
+│ 2025-09-02 ┆ 2.9518e6   ┆ 98               ┆ 71           │
+│ 2025-09-03 ┆ 1.9597e6   ┆ 3002             ┆ 274          │
+│ 2025-09-21 ┆ -33.32     ┆ 1                ┆ 1            │
+└────────────┴────────────┴──────────────────┴──────────────┘, 'top_book': shape: (112, 7)
+┌─────────┬──────────┬───────────┬───────────────┬──────────────────┬─────────────────┬────────────┐
+│ book_id ┆ revenue  ┆ num_sales ┆ unique_buyers ┆ title            ┆ category        ┆ base_price │
+│ ---     ┆ ---      ┆ ---       ┆ ---           ┆ ---              ┆ ---             ┆ ---        │
+│ i64     ┆ f64      ┆ u32       ┆ u32           ┆ str              ┆ str             ┆ f64        │
+╞═════════╪══════════╪═══════════╪═══════════════╪══════════════════╪═════════════════╪════════════╡
+│ 93      ┆ 1.7564e7 ┆ 783       ┆ 228           ┆ System Design    ┆ Fiction         ┆ 22.34      │
+│         ┆          ┆           ┆               ┆ Interview        ┆                 ┆            │
+│ 95      ┆ 1.7320e7 ┆ 753       ┆ 232           ┆ The Murder Plot  ┆ Art             ┆ 30.72      │
+│ 108     ┆ 1.6657e7 ┆ 749       ┆ 242           ┆ Investment       ┆ Fiction         ┆ 10.84      │
+│         ┆          ┆           ┆               ┆ Strategies       ┆                 ┆            │
+│ 73      ┆ 1.6654e7 ┆ 727       ┆ 233           ┆ Network Security ┆ Children        ┆ 6.35       │
+│ 23      ┆ 1.5616e7 ┆ 755       ┆ 228           ┆ The Food         ┆ Cooking         ┆ 23.97      │
+│         ┆          ┆           ┆               ┆ Revolution       ┆                 ┆            │
+│ …       ┆ …        ┆ …         ┆ …             ┆ …                ┆ …               ┆ …          │
+│ 91      ┆ 4.4601e6 ┆ 685       ┆ 230           ┆ The              ┆ Science Fiction ┆ 17.4       │
+│         ┆          ┆           ┆               ┆ Investigation    ┆                 ┆            │
+│ 5       ┆ 4.3611e6 ┆ 727       ┆ 233           ┆ Machine Learning ┆ Fiction         ┆ 17.97      │
+│         ┆          ┆           ┆               ┆ Fundamentals     ┆                 ┆            │
+│ 58      ┆ 3.1085e6 ┆ 706       ┆ 226           ┆ Romantic         ┆ Science Fiction ┆ 14.21      │
+│         ┆          ┆           ┆               ┆ Getaways         ┆                 ┆            │
+│ 47      ┆ 2.6552e6 ┆ 710       ┆ 226           ┆ Creative Writing ┆ Romance         ┆ 8.57       │
+│         ┆          ┆           ┆               ┆ Workshop         ┆                 ┆            │
+│ 76      ┆ 2.5086e6 ┆ 713       ┆ 230           ┆ Sleep Better     ┆ Mystery         ┆ 14.53      │
+│         ┆          ┆           ┆               ┆ Tonight          ┆                 ┆            │
+└─────────┴──────────┴───────────┴───────────────┴──────────────────┴─────────────────┴────────────┘}
+[2025-09-11T01:19:10.500+0000] {xcom.py:690} ERROR - Object of type bytes is not JSON serializable. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your airflow config or make sure to decorate your object with attr.
+[2025-09-11T01:19:10.505+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 92, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/serialization/serde.py", line 190, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'bytes'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 789, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session_or_null)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3638, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 249, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 688, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 105, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 94, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+[2025-09-11T01:19:10.595+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-09-11T01:19:10.596+0000] {logging_mixin.py:190} INFO - Task start:2025-09-11 01:19:09.236271+00:00 end:2025-09-11 01:19:10.594906+00:00 duration:1.358635
+[2025-09-11T01:19:10.597+0000] {logging_mixin.py:190} INFO - Task:<Task(_PythonDecoratedOperator): transform_data> dag:<DAG: Sue_books_data_pipeline> dagrun:<DagRun Sue_books_data_pipeline @ 2025-09-11 01:16:37.252135+00:00: manual__2025-09-11T01:16:37.252135+00:00, state:running, queued_at: 2025-09-11 01:16:37.263889+00:00. externally triggered: True>
+[2025-09-11T01:19:10.597+0000] {logging_mixin.py:190} INFO - Failure caused by Object of type bytes is not JSON serializable
+[2025-09-11T01:19:10.598+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=Sue_books_data_pipeline, task_id=transform_data, run_id=manual__2025-09-11T01:16:37.252135+00:00, execution_date=20250911T011637, start_date=20250911T011909, end_date=20250911T011910
+[2025-09-11T01:19:10.644+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-09-11T01:19:10.645+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 27 for task transform_data (Object of type bytes is not JSON serializable; 1991)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 92, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/serialization/serde.py", line 190, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'bytes'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 789, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session_or_null)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3638, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 249, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 688, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 105, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 94, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+[2025-09-11T01:19:10.670+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-09-11T01:19:10.731+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-11T01:19:10.745+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

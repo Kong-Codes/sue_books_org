@@ -1,0 +1,374 @@
+[2025-09-11T00:02:16.536+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-09-11T00:02:16.563+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.extract_data scheduled__2025-09-10T00:00:00+00:00 [queued]>
+[2025-09-11T00:02:16.575+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.extract_data scheduled__2025-09-10T00:00:00+00:00 [queued]>
+[2025-09-11T00:02:16.575+0000] {taskinstance.py:2865} INFO - Starting attempt 3 of 3
+[2025-09-11T00:02:16.596+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): extract_data> on 2025-09-10 00:00:00+00:00
+[2025-09-11T00:02:16.604+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=1037) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-09-11T00:02:16.606+0000] {standard_task_runner.py:72} INFO - Started process 1040 to run task
+[2025-09-11T00:02:16.607+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'Sue_books_data_pipeline', 'extract_data', 'scheduled__2025-09-10T00:00:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpbd2cmhrn']
+[2025-09-11T00:02:16.609+0000] {standard_task_runner.py:105} INFO - Job 19: Subtask extract_data
+[2025-09-11T00:02:16.749+0000] {task_command.py:467} INFO - Running <TaskInstance: Sue_books_data_pipeline.extract_data scheduled__2025-09-10T00:00:00+00:00 [running]> on host 77c98720bb84
+[2025-09-11T00:02:16.891+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='sadiquetimileyin@gmail.com' AIRFLOW_CTX_DAG_OWNER='sadique' AIRFLOW_CTX_DAG_ID='Sue_books_data_pipeline' AIRFLOW_CTX_TASK_ID='extract_data' AIRFLOW_CTX_EXECUTION_DATE='2025-09-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-10T00:00:00+00:00'
+[2025-09-11T00:02:16.892+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-09-11T00:02:16.893+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-09-11T00:02:16.893+0000] {logging_mixin.py:190} INFO - Current task name:extract_data state:running start_date:2025-09-11 00:02:16.564455+00:00
+[2025-09-11T00:02:16.894+0000] {logging_mixin.py:190} INFO - Dag name:Sue_books_data_pipeline and current dag run status:running
+[2025-09-11T00:02:16.894+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-09-11T00:02:17.025+0000] {python.py:240} INFO - Done. Returned value was: {'users': shape: (945, 6)
+┌─────┬───────────────────┬───────────────────┬───────────────────┬─────────────┬──────────────────┐
+│ id  ┆ name              ┆ email             ┆ location          ┆ signup_date ┆ social_security_ │
+│ --- ┆ ---               ┆ ---               ┆ ---               ┆ ---         ┆ number           │
+│ i64 ┆ str               ┆ str               ┆ str               ┆ str         ┆ ---              │
+│     ┆                   ┆                   ┆                   ┆             ┆ str              │
+╞═════╪═══════════════════╪═══════════════════╪═══════════════════╪═════════════╪══════════════════╡
+│ 1   ┆ Tyler Webb        ┆ not-an-email-addr ┆ Evansland, UT     ┆ 2021-03-07  ┆ 162-57-6810      │
+│     ┆                   ┆ ess               ┆                   ┆             ┆                  │
+│ 2   ┆ Mr. Lawrence      ┆ jessica56@example ┆ Zacharyville, MD  ┆ 2022-09-23  ┆ 123-45-INVALID   │
+│     ┆ Edwards           ┆ .org              ┆                   ┆             ┆                  │
+│ 3   ┆ Jerry Thomas      ┆ robertspatrick@ex ┆ Wrightburgh, GU   ┆ 2024-08-21  ┆ 336-74-5124      │
+│     ┆                   ┆ ample.net         ┆                   ┆             ┆                  │
+│ 4   ┆ Shawn Jimenez     ┆ kathrynjimenez@ex ┆ South             ┆ 2025-08-19  ┆ 362-07-0829      │
+│     ┆                   ┆ ample.net         ┆ Williambury, IL   ┆             ┆                  │
+│ 5   ┆ Stephen Pena MD   ┆ booneryan@example ┆ Kathrynstad, AZ   ┆ 2023-01-24  ┆ 411-07-9344      │
+│     ┆                   ┆ .com              ┆                   ┆             ┆                  │
+│ …   ┆ …                 ┆ …                 ┆ …                 ┆ …           ┆ …                │
+│ 941 ┆ Autumn Sharp      ┆ danielle39@exampl ┆                   ┆ 2023-07-17  ┆ 188-83-8143      │
+│     ┆                   ┆ e.net             ┆                   ┆             ┆                  │
+│ 942 ┆ John Nelson       ┆ jmedina@example.c ┆ West Davidfurt,   ┆ 2023-11-11  ┆ 564-51-0054      │
+│     ┆                   ┆ om                ┆ GU                ┆             ┆                  │
+│ 943 ┆ Timothy Reilly    ┆ jdonovan@example. ┆ Williamchester,   ┆ 2021-03-27  ┆ 273-07-7008      │
+│     ┆                   ┆ net               ┆ ID                ┆             ┆                  │
+│ 944 ┆ Karen Hughes      ┆ taylordavid@examp ┆ Port Chadville,   ┆ 2024-11-01  ┆ 549-35-2088      │
+│     ┆                   ┆ le.org            ┆ OH                ┆             ┆                  │
+│ 945 ┆ Tammy Mcdaniel    ┆ not-an-email-addr ┆ North Patricia,   ┆ 2021-03-07  ┆ 011-15-5532      │
+│     ┆                   ┆ ess               ┆ OK                ┆             ┆                  │
+└─────┴───────────────────┴───────────────────┴───────────────────┴─────────────┴──────────────────┘, 'transactions': shape: (100_091, 5)
+┌────────────────┬─────────┬─────────┬────────┬─────────────────────┐
+│ transaction_id ┆ user_id ┆ book_id ┆ amount ┆ timestamp           │
+│ ---            ┆ ---     ┆ ---     ┆ ---    ┆ ---                 │
+│ i64            ┆ str     ┆ str     ┆ f64    ┆ str                 │
+╞════════════════╪═════════╪═════════╪════════╪═════════════════════╡
+│ 54383          ┆ 595     ┆ 81.0    ┆ 0.0    ┆ 2023-09-04 21:40:19 │
+│ 21271          ┆ 657     ┆ 33.0    ┆ 0.0    ┆ 2023-09-04 21:41:06 │
+│ 84514          ┆ 657     ┆ 103.0   ┆ 10.74  ┆ 2023-09-04 21:58:06 │
+│ 60989          ┆ 657     ┆ 58.0    ┆ 9.95   ┆ 2023-09-04 22:05:06 │
+│ 21716          ┆ 1092    ┆ 98.0    ┆ 34.02  ┆ 2023-09-04 21:50:30 │
+│ …              ┆ …       ┆ …       ┆ …      ┆ …                   │
+│ 100087         ┆ 157     ┆ 51.0    ┆ -33.32 ┆ 2025-09-21 17:32:35 │
+│ 100088         ┆ 346     ┆ 35.0    ┆ -18.69 ┆ 2025-07-14 13:49:08 │
+│ 100089         ┆ 68      ┆ 100.0   ┆ -29.76 ┆ 2025-01-04 01:29:02 │
+│ 100090         ┆ 177     ┆ 93.0    ┆ -22.34 ┆ 2025-06-08 09:28:22 │
+│ 100091         ┆ 132     ┆ 71.0    ┆ -26.41 ┆ 2025-01-29 14:07:14 │
+└────────────────┴─────────┴─────────┴────────┴─────────────────────┘, 'books': shape: (112, 9)
+┌─────────┬────────────┬────────────┬────────────┬───┬────────────┬────────────┬───────┬───────────┐
+│ book_id ┆ title      ┆ category   ┆ base_price ┆ … ┆ isbn       ┆ publicatio ┆ pages ┆ publisher │
+│ ---     ┆ ---        ┆ ---        ┆ ---        ┆   ┆ ---        ┆ n_year     ┆ ---   ┆ ---       │
+│ i64     ┆ str        ┆ str        ┆ f64        ┆   ┆ str        ┆ ---        ┆ i64   ┆ str       │
+│         ┆            ┆            ┆            ┆   ┆            ┆ i64        ┆       ┆           │
+╞═════════╪════════════╪════════════╪════════════╪═══╪════════════╪════════════╪═══════╪═══════════╡
+│ 1       ┆ The Great  ┆ Cooking    ┆ 15.44      ┆ … ┆ 978-0-18-1 ┆ 2007       ┆ 400   ┆ Hall PLC  │
+│         ┆ Adventure  ┆            ┆            ┆   ┆ 96001-0    ┆            ┆       ┆           │
+│ 2       ┆ Digital    ┆ Romance    ┆ 9.25       ┆ … ┆ 978-0-7940 ┆ 1996       ┆ 708   ┆ Lewis LLC │
+│         ┆ Transforma ┆            ┆            ┆   ┆ -2654-7    ┆            ┆       ┆           │
+│         ┆ tion Guide ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│ 3       ┆ Cooking    ┆ Non-Fictio ┆ 25.98      ┆ … ┆ 978-1-07-8 ┆ 1992       ┆ 180   ┆ Montgomer │
+│         ┆ Mastery    ┆ n          ┆            ┆   ┆ 16184-8    ┆            ┆       ┆ y,        │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Hensley   │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and Ray   │
+│ 4       ┆ The Silent ┆ Non-Fictio ┆ 17.8       ┆ … ┆ 978-0-316- ┆ 2022       ┆ 766   ┆ Clark-Ada │
+│         ┆ Observer   ┆ n          ┆            ┆   ┆ 47525-9    ┆            ┆       ┆ ms        │
+│ 5       ┆ Machine    ┆ Fiction    ┆ 17.97      ┆ … ┆ 978-0-276- ┆ 2024       ┆ 579   ┆ Underwood │
+│         ┆ Learning   ┆            ┆            ┆   ┆ 48350-9    ┆            ┆       ┆ LLC       │
+│         ┆ Fundamenta ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│         ┆ ls         ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│ …       ┆ …          ┆ …          ┆ …          ┆ … ┆ …          ┆ …          ┆ …     ┆ …         │
+│ 108     ┆ Investment ┆ Fiction    ┆ 10.84      ┆ … ┆ 978-0-7058 ┆ 2006       ┆ 332   ┆ Salazar   │
+│         ┆ Strategies ┆            ┆            ┆   ┆ -9578-1    ┆            ┆       ┆ Inc       │
+│ 109     ┆ Vue.js     ┆ Children   ┆ 14.65      ┆ … ┆ 978-1-6912 ┆ 2006       ┆ 189   ┆ Holmes,   │
+│         ┆ Mastery    ┆            ┆            ┆   ┆ 5-177-3    ┆            ┆       ┆ Anderson  │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and       │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Calderon  │
+│ 110     ┆ Love at    ┆ Non-Fictio ┆ 26.11      ┆ … ┆ 978-1-8018 ┆ 2012       ┆ 471   ┆ Donovan-P │
+│         ┆ First      ┆ n          ┆            ┆   ┆ 2-422-4    ┆            ┆       ┆ erez      │
+│         ┆ Sight      ┆            ┆            ┆   ┆            ┆            ┆       ┆           │
+│ 111     ┆ The        ┆ Self-Help  ┆ 19.87      ┆ … ┆ 978-1-384- ┆ 2022       ┆ 268   ┆ Davidson, │
+│         ┆ Conspiracy ┆            ┆            ┆   ┆ 24981-0    ┆            ┆       ┆ Vargas    │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and       │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Carpenter │
+│ 112     ┆ Retirement ┆ Self-Help  ┆ 23.68      ┆ … ┆ 978-0-01-0 ┆ 2002       ┆ 410   ┆ Fowler,   │
+│         ┆ Planning   ┆            ┆            ┆   ┆ 94396-2    ┆            ┆       ┆ Jimenez   │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ and       │
+│         ┆            ┆            ┆            ┆   ┆            ┆            ┆       ┆ Burton    │
+└─────────┴────────────┴────────────┴────────────┴───┴────────────┴────────────┴───────┴───────────┘}
+[2025-09-11T00:02:17.046+0000] {xcom.py:690} ERROR - Object of type bytes is not JSON serializable. If you are using pickle instead of JSON for XCom, then you need to enable pickle support for XCom in your airflow config or make sure to decorate your object with attr.
+[2025-09-11T00:02:17.052+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 92, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/serialization/serde.py", line 190, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'bytes'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 789, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session_or_null)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3638, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 249, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 688, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 105, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 94, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+[2025-09-11T00:02:17.086+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-09-11T00:02:17.087+0000] {logging_mixin.py:190} INFO - Task start:2025-09-11 00:02:16.564455+00:00 end:2025-09-11 00:02:17.085717+00:00 duration:0.521262
+[2025-09-11T00:02:17.087+0000] {logging_mixin.py:190} INFO - Task:<Task(_PythonDecoratedOperator): extract_data> dag:<DAG: Sue_books_data_pipeline> dagrun:<DagRun Sue_books_data_pipeline @ 2025-09-10 00:00:00+00:00: scheduled__2025-09-10T00:00:00+00:00, state:running, queued_at: 2025-09-11 00:00:00.166755+00:00. externally triggered: False>
+[2025-09-11T00:02:17.088+0000] {logging_mixin.py:190} INFO - Failure caused by Object of type bytes is not JSON serializable
+[2025-09-11T00:02:17.088+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=Sue_books_data_pipeline, task_id=extract_data, run_id=scheduled__2025-09-10T00:00:00+00:00, execution_date=20250910T000000, start_date=20250911T000216, end_date=20250911T000217
+[2025-09-11T00:02:17.114+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py:155: RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+  send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+
+[2025-09-11T00:02:17.115+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
+[2025-09-11T00:02:17.116+0000] {email.py:272} INFO - Email alerting: attempt 1
+[2025-09-11T00:02:17.142+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
+[2025-09-11T00:02:17.143+0000] {email.py:272} INFO - Email alerting: attempt 1
+[2025-09-11T00:02:17.144+0000] {taskinstance.py:1234} ERROR - Failed to send email to: ['sadiquetimileyin@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 92, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/serialization/serde.py", line 190, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'bytes'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 789, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session_or_null)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3638, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 249, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 688, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 105, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 94, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 1442, in _email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+           ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 155, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 274, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 318, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 1232, in _handle_failure
+    task_instance.email_alert(error, failure_context["task"])
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3604, in email_alert
+    _email_alert(task_instance=self, exception=exception, task=task)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 1444, in _email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+           ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 155, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 274, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 318, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2025-09-11T00:02:17.185+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-09-11T00:02:17.186+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 19 for task extract_data (Object of type bytes is not JSON serializable; 1040)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 92, in default
+    return serialize(o)
+           ^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/serialization/serde.py", line 190, in serialize
+    raise TypeError(f"cannot serialize object of type {cls}")
+TypeError: cannot serialize object of type <class 'bytes'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 789, in _execute_task
+    task_instance.xcom_push(key=XCOM_RETURN_KEY, value=xcom_value, session=session_or_null)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3638, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 139, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 94, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 249, in set
+    value = cls.serialize_value(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/xcom.py", line 688, in serialize_value
+    return json.dumps(value, cls=XComEncoder).encode("UTF-8")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 105, in encode
+    return super().encode(o)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/json.py", line 94, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+[2025-09-11T00:02:17.262+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-09-11T00:02:17.301+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-11T00:02:17.310+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

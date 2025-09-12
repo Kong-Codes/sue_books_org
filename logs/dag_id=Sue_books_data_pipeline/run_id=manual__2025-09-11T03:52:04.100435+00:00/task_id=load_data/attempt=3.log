@@ -1,0 +1,279 @@
+[2025-09-11T03:55:03.783+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-09-11T03:55:03.849+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.load_data manual__2025-09-11T03:52:04.100435+00:00 [queued]>
+[2025-09-11T03:55:03.878+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.load_data manual__2025-09-11T03:52:04.100435+00:00 [queued]>
+[2025-09-11T03:55:03.879+0000] {taskinstance.py:2865} INFO - Starting attempt 3 of 3
+[2025-09-11T03:55:03.960+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): load_data> on 2025-09-11 03:52:04.100435+00:00
+[2025-09-11T03:55:03.983+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=981) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-09-11T03:55:03.985+0000] {standard_task_runner.py:72} INFO - Started process 984 to run task
+[2025-09-11T03:55:03.986+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'Sue_books_data_pipeline', 'load_data', 'manual__2025-09-11T03:52:04.100435+00:00', '--job-id', '102', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpgseywde5']
+[2025-09-11T03:55:03.988+0000] {standard_task_runner.py:105} INFO - Job 102: Subtask load_data
+[2025-09-11T03:55:04.126+0000] {task_command.py:467} INFO - Running <TaskInstance: Sue_books_data_pipeline.load_data manual__2025-09-11T03:52:04.100435+00:00 [running]> on host 34752174ab96
+[2025-09-11T03:55:04.431+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='sadiquetimileyin@gmail.com' AIRFLOW_CTX_DAG_OWNER='sadique' AIRFLOW_CTX_DAG_ID='Sue_books_data_pipeline' AIRFLOW_CTX_TASK_ID='load_data' AIRFLOW_CTX_EXECUTION_DATE='2025-09-11T03:52:04.100435+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-11T03:52:04.100435+00:00'
+[2025-09-11T03:55:04.433+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-09-11T03:55:04.434+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-09-11T03:55:04.435+0000] {logging_mixin.py:190} INFO - Current task name:load_data state:running start_date:2025-09-11 03:55:03.850383+00:00
+[2025-09-11T03:55:04.435+0000] {logging_mixin.py:190} INFO - Dag name:Sue_books_data_pipeline and current dag run status:running
+[2025-09-11T03:55:04.436+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-09-11T03:55:04.639+0000] {tables.py:215} INFO - Dimension tables created successfully.
+[2025-09-11T03:55:04.678+0000] {tables.py:241} INFO - Fact table created successfully. Total records: 78484
+[2025-09-11T03:55:04.711+0000] {utils.py:103} WARNING - Database 'sales_db' already exists.
+[2025-09-11T03:55:04.860+0000] {utils.py:216} INFO - Tables created successfully.
+[2025-09-11T03:55:04.865+0000] {utils.py:220} INFO - OLAP Tables: ['dim_user', 'fact_transactions', 'dim_book', 'dim_date', 'fact_daily_sales', 'fact_book_sales']
+[2025-09-11T03:55:04.908+0000] {utils.py:182} INFO - Preparing to upsert 904 rows into oltp.users...
+[2025-09-11T03:55:04.945+0000] {utils.py:199} INFO - 904 records upserted into oltp.users
+[2025-09-11T03:55:04.946+0000] {utils.py:182} INFO - Preparing to upsert 112 rows into oltp.books...
+[2025-09-11T03:55:04.965+0000] {utils.py:199} INFO - 112 records upserted into oltp.books
+[2025-09-11T03:55:04.967+0000] {utils.py:182} INFO - Preparing to upsert 78484 rows into oltp.transactions...
+[2025-09-11T03:55:12.797+0000] {utils.py:199} INFO - 78484 records upserted into oltp.transactions
+[2025-09-11T03:55:12.800+0000] {utils.py:182} INFO - Preparing to upsert 904 rows into olap.dim_user...
+[2025-09-11T03:55:12.851+0000] {utils.py:201} ERROR - Failed to upsert into olap.dim_user: duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+Traceback (most recent call last):
+  File "/opt/airflow/dags/utils.py", line 196, in upsert_from_df
+    execute_values(cur, insert_sql, values, page_size=chunk_size)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+
+[2025-09-11T03:55:12.856+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 266, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipeline_dag.py", line 71, in load_data
+    upsert_from_df(conn, dim_tables['dim_user'], 'dim_user', ['user_sk'], schema='olap')
+  File "/opt/airflow/dags/utils.py", line 196, in upsert_from_df
+    execute_values(cur, insert_sql, values, page_size=chunk_size)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+
+[2025-09-11T03:55:12.882+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-09-11T03:55:12.882+0000] {logging_mixin.py:190} INFO - Task start:2025-09-11 03:55:03.850383+00:00 end:2025-09-11 03:55:12.880646+00:00 duration:9.030263
+[2025-09-11T03:55:12.883+0000] {logging_mixin.py:190} INFO - Task:<Task(_PythonDecoratedOperator): load_data> dag:<DAG: Sue_books_data_pipeline> dagrun:<DagRun Sue_books_data_pipeline @ 2025-09-11 03:52:04.100435+00:00: manual__2025-09-11T03:52:04.100435+00:00, state:running, queued_at: 2025-09-11 03:52:04.116533+00:00. externally triggered: True>
+[2025-09-11T03:55:12.883+0000] {logging_mixin.py:190} INFO - Failure caused by duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+[2025-09-11T03:55:12.883+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=Sue_books_data_pipeline, task_id=load_data, run_id=manual__2025-09-11T03:52:04.100435+00:00, execution_date=20250911T035204, start_date=20250911T035503, end_date=20250911T035512
+[2025-09-11T03:55:12.913+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py:155: RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+  send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+
+[2025-09-11T03:55:12.914+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
+[2025-09-11T03:55:12.915+0000] {email.py:272} INFO - Email alerting: attempt 1
+[2025-09-11T03:55:12.935+0000] {configuration.py:1058} WARNING - section/key [smtp/smtp_user] not found in config
+[2025-09-11T03:55:12.935+0000] {email.py:272} INFO - Email alerting: attempt 1
+[2025-09-11T03:55:12.936+0000] {taskinstance.py:1234} ERROR - Failed to send email to: ['sadiquetimileyin@gmail.com']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 266, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipeline_dag.py", line 71, in load_data
+    upsert_from_df(conn, dim_tables['dim_user'], 'dim_user', ['user_sk'], schema='olap')
+  File "/opt/airflow/dags/utils.py", line 196, in upsert_from_df
+    execute_values(cur, insert_sql, values, page_size=chunk_size)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 1442, in _email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+           ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 155, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 274, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 318, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 1232, in _handle_failure
+    task_instance.email_alert(error, failure_context["task"])
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3604, in email_alert
+    _email_alert(task_instance=self, exception=exception, task=task)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 1444, in _email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 80, in send_email
+    return backend(
+           ^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 155, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 274, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/email.py", line 318, in _get_smtp_connection
+    return smtplib.SMTP(host=host, port=port, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 865, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 850, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2025-09-11T03:55:12.972+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-09-11T03:55:12.973+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 102 for task load_data (duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+; 984)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 266, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipeline_dag.py", line 71, in load_data
+    upsert_from_df(conn, dim_tables['dim_user'], 'dim_user', ['user_sk'], schema='olap')
+  File "/opt/airflow/dags/utils.py", line 196, in upsert_from_df
+    execute_values(cur, insert_sql, values, page_size=chunk_size)
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UniqueViolation: duplicate key value violates unique constraint "dim_user_user_id_key"
+DETAIL:  Key (user_id)=(69) already exists.
+
+[2025-09-11T03:55:13.023+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-09-11T03:55:13.057+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-11T03:55:13.063+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

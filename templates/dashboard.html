@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>Sales Dashboard</h1>
+      <form method="get" action="{{ url_for('dashboard') }}">
+        <label for="date">Date</label>
+        <input id="date" type="date" name="date" value="{{ date_str }}">
+        <button type="submit">Load</button>
+      </form>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+      <section class="card">
+        <h2>Daily Sales ({{ date_str }})</h2>
+        {% if sales %}
+          <div class="metrics">
+            <div><span>Revenue</span><strong>${{ '%.2f'|format(sales.revenue) }}</strong></div>
+            <div><span>Transactions</span><strong>{{ sales.num_transactions }}</strong></div>
+            <div><span>Active Users</span><strong>{{ sales.active_users }}</strong></div>
+          </div>
+        {% else %}
+          <p>No sales data.</p>
+        {% endif %}
+      </section>
+
+      <section class="card">
+        <h2>Top Books</h2>
+        {% if top_books %}
+          <table>
+            <thead>
+              <tr>
+                <th>Book ID</th>
+                <th>Revenue</th>
+                <th>Sales</th>
+                <th>Unique Buyers</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for b in top_books %}
+                <tr>
+                  <td>{{ b.book_id }}</td>
+                  <td>${{ '%.2f'|format(b.revenue) }}</td>
+                  <td>{{ b.num_sales }}</td>
+                  <td>{{ b.unique_buyers }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>No top books data.</p>
+        {% endif %}
+      </section>
+    </main>
+
+  </body>
+  </html>
+
+

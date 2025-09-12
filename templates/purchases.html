@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User {{ user_id }} Purchases</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>User {{ user_id }} Purchases</h1>
+      <nav><a href="{{ url_for('dashboard') }}">← Back to Dashboard</a></nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+      {% if purchases %}
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction ID</th>
+              <th>Book ID</th>
+              <th>Amount</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in purchases %}
+              <tr>
+                <td>{{ p.transaction_id }}</td>
+                <td>{{ p.book_id }}</td>
+                <td>${{ '%.2f'|format(p.amount) }}</td>
+                <td>{{ p.timestamp }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No purchases available.</p>
+      {% endif %}
+    </main>
+  </body>
+  </html>
+
+

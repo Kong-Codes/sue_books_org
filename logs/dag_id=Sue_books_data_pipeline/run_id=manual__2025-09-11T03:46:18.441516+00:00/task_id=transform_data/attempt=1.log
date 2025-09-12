@@ -1,0 +1,34 @@
+[2025-09-11T03:46:28.947+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-09-11T03:46:28.988+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.transform_data manual__2025-09-11T03:46:18.441516+00:00 [queued]>
+[2025-09-11T03:46:29.004+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Sue_books_data_pipeline.transform_data manual__2025-09-11T03:46:18.441516+00:00 [queued]>
+[2025-09-11T03:46:29.004+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 3
+[2025-09-11T03:46:29.040+0000] {taskinstance.py:2888} INFO - Executing <Task(_PythonDecoratedOperator): transform_data> on 2025-09-11 03:46:18.441516+00:00
+[2025-09-11T03:46:29.059+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=798) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-09-11T03:46:29.060+0000] {standard_task_runner.py:72} INFO - Started process 803 to run task
+[2025-09-11T03:46:29.059+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'Sue_books_data_pipeline', 'transform_data', 'manual__2025-09-11T03:46:18.441516+00:00', '--job-id', '93', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpx9ro1ylw']
+[2025-09-11T03:46:29.063+0000] {standard_task_runner.py:105} INFO - Job 93: Subtask transform_data
+[2025-09-11T03:46:29.176+0000] {task_command.py:467} INFO - Running <TaskInstance: Sue_books_data_pipeline.transform_data manual__2025-09-11T03:46:18.441516+00:00 [running]> on host 34752174ab96
+[2025-09-11T03:46:29.452+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='sadiquetimileyin@gmail.com' AIRFLOW_CTX_DAG_OWNER='sadique' AIRFLOW_CTX_DAG_ID='Sue_books_data_pipeline' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-09-11T03:46:18.441516+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-11T03:46:18.441516+00:00'
+[2025-09-11T03:46:29.458+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-09-11T03:46:29.459+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-09-11T03:46:29.464+0000] {logging_mixin.py:190} INFO - Current task name:transform_data state:running start_date:2025-09-11 03:46:28.989496+00:00
+[2025-09-11T03:46:29.465+0000] {logging_mixin.py:190} INFO - Dag name:Sue_books_data_pipeline and current dag run status:running
+[2025-09-11T03:46:29.465+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-09-11T03:46:29.585+0000] {tables.py:140} INFO - Data loaded successfully.
+[2025-09-11T03:46:29.636+0000] {tables.py:40} INFO - Users data cleaned successfully. Total records: 904
+[2025-09-11T03:46:29.747+0000] {tables.py:76} INFO - Transactions data cleaned successfully. Total records: 82678
+[2025-09-11T03:46:29.781+0000] {tables.py:100} INFO - Daily sales table created successfully. Total records: 732
+[2025-09-11T03:46:29.796+0000] {tables.py:149} INFO - Data cleaning and transformation complete.
+[2025-09-11T03:46:30.088+0000] {tables.py:167} INFO - Transformed data saved to files successfully.
+[2025-09-11T03:46:30.090+0000] {python.py:240} INFO - Done. Returned value was: {'users': '/opt/airflow/datasets/processed/users_clean.parquet', 'transactions': '/opt/airflow/datasets/processed/transactions_clean.parquet', 'books': '/opt/airflow/datasets/processed/books_clean.parquet', 'daily_sales': '/opt/airflow/datasets/processed/daily_sales.parquet', 'top_book': '/opt/airflow/datasets/processed/top_book.parquet'}
+[2025-09-11T03:46:30.153+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-09-11T03:46:30.154+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=Sue_books_data_pipeline, task_id=transform_data, run_id=manual__2025-09-11T03:46:18.441516+00:00, execution_date=20250911T034618, start_date=20250911T034628, end_date=20250911T034630
+[2025-09-11T03:46:30.197+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-09-11T03:46:30.198+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-09-11T03:46:30.198+0000] {logging_mixin.py:190} INFO - Dag name:Sue_books_data_pipeline queued_at:2025-09-11 03:46:18.638092+00:00
+[2025-09-11T03:46:30.199+0000] {logging_mixin.py:190} INFO - Task hostname:34752174ab96 operator:_PythonDecoratedOperator
+[2025-09-11T03:46:30.228+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-09-11T03:46:30.293+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-09-11T03:46:30.302+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
