@@ -1,6 +1,6 @@
 import os
 from datetime import date as Date
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 import requests
 from flask import Flask, render_template, request, redirect, url_for, flash

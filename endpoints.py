@@ -1,12 +1,11 @@
 import os
+from datetime import date as Date
 from typing import List, Optional
 
 import polars as pl
 import psycopg2
 from fastapi import FastAPI, HTTPException, Query
-from datetime import date as Date
 from pydantic import BaseModel
-
 
 # ---------- Config ----------
 SALES_DB_URL = os.environ.get("DATABASE_URL")

@@ -1,7 +1,8 @@
 import os
+from datetime import datetime, timedelta
+
 import polars as pl
 from airflow.decorators import dag, task
-from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 load_dotenv()

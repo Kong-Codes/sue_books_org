@@ -3,9 +3,9 @@ import os
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from typing import Sequence, Optional
-import polars as pl
 
 import numpy as np
+import polars as pl
 import psycopg2
 import psycopg2.extensions
 from dotenv import load_dotenv
