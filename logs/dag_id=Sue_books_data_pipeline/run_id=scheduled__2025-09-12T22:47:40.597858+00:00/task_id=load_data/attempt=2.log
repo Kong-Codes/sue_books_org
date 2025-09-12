@@ -1,0 +1,35 @@
+{"timestamp":"2025-09-12T22:50:23.235419","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-12T22:50:23.238472","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-12T22:50:24.603362Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T22:50:24.603925Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T22:50:24.604651Z","level":"info","event":"Current task name:load_data","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T22:50:24.611526Z","level":"info","event":"Dag name:Sue_books_data_pipeline","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T22:50:25.172008","level":"info","event":"Dimension tables created successfully.","logger":"tables"}
+{"timestamp":"2025-09-12T22:50:25.312007","level":"info","event":"Fact table created successfully. Total records: 78484","logger":"tables"}
+{"timestamp":"2025-09-12T22:50:25.348920","level":"warning","event":"Database 'sales_db' already exists.","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:26.711456","level":"info","event":"Tables created successfully.","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:26.718184","level":"info","event":"OLAP Tables: ['dim_user', 'fact_transactions', 'dim_book', 'dim_date', 'fact_daily_sales', 'fact_book_sales']","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:26.753429","level":"info","event":"Preparing to upsert 904 rows into oltp.users...","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:27.190997","level":"info","event":"904 records upserted into oltp.users","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:27.203777","level":"info","event":"Preparing to upsert 112 rows into oltp.books...","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:27.219194","level":"info","event":"112 records upserted into oltp.books","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:27.450418","level":"info","event":"Preparing to upsert 78484 rows into oltp.transactions...","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.250284","level":"info","event":"78484 records upserted into oltp.transactions","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.253189","level":"info","event":"Preparing to upsert 904 rows into olap.dim_user...","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.335465","level":"info","event":"904 records upserted into olap.dim_user","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.337421","level":"info","event":"Preparing to upsert 112 rows into olap.dim_book...","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.347934","level":"info","event":"112 records upserted into olap.dim_book","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.359505","level":"info","event":"Preparing to upsert 545 rows into olap.dim_date...","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.388222","level":"info","event":"545 records upserted into olap.dim_date","logger":"utils"}
+{"timestamp":"2025-09-12T22:50:53.405078","level":"info","event":"Preparing to upsert 78484 rows into olap.fact_transactions...","logger":"utils"}
+{"timestamp":"2025-09-12T22:51:10.456362","level":"info","event":"78484 records upserted into olap.fact_transactions","logger":"utils"}
+{"timestamp":"2025-09-12T22:51:10.475971","level":"info","event":"Preparing to upsert 545 rows into olap.fact_daily_sales...","logger":"utils"}
+{"timestamp":"2025-09-12T22:51:10.563986","level":"info","event":"545 records upserted into olap.fact_daily_sales","logger":"utils"}
+{"timestamp":"2025-09-12T22:51:10.565956","level":"info","event":"Preparing to upsert 112 rows into olap.fact_book_sales...","logger":"utils"}
+{"timestamp":"2025-09-12T22:51:10.727753","level":"info","event":"112 records upserted into olap.fact_book_sales","logger":"utils"}
+{"timestamp":"2025-09-12T22:51:10.728040","level":"info","event":"Data load completed: 80157 total rows loaded across all tables","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-09-12T22:51:10.760528","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-09-12T22:51:11.155283","level":"info","event":"Task load_data in DAG Sue_books_data_pipeline completed successfully","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-09-12T22:51:11.156419Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T22:51:11.156825Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-12T22:51:11.157255Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): load_data>","chan":"stdout","logger":"task"}
