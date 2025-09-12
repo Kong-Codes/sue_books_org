@@ -53,7 +53,7 @@ default_args = {
     'Sue_books_data_pipeline',
     default_args=default_args,
     description='A simple DAG to upload data to the db',
-    schedule_interval=timedelta(days=1),
+    schedule=timedelta(days=1),
     catchup=False,
 )
 def etl_pipeline():
