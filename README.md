@@ -16,9 +16,9 @@ After collecting the file paths using XCom, I proceeded with transformation and 
 
 The ERD will be attached below for both the OLTP and OLAP schemas.
 
-![OLTP](image/oltp_erd.png)
+![OLTP](images/oltp_erd.png)
 
-![OLAP](image/olap_erd.png)
+![OLAP](images/olap_erd.png)
 
 ### Loading
 For the loading phase, I created the schema and database, then loaded the data into the database with all data types enforced. I also created two separate schemas to differentiate between the OLAP and OLTP tables.
@@ -360,10 +360,10 @@ This can be found in the jupyter notebook @sales_data_cleaning i used matplotlib
 This are the insights gotten:
 
 Daily revenue trend:
-![daily revenue trend](image/revenue.png)
+![daily revenue trend](images/revenue.png)
 
 Top books
-![Top books](image/top_books.png)
+![Top books](images/top_books.png)
 
 Active Users and transaction overtime
-![Active users](image/active_users.png)
+![Active users](images/active_users.png)
