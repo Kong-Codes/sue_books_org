@@ -1,4 +1,4 @@
-# Sales Analytics Platform
+# Sue Books
 
 ## Architecture/Design Decisions
 
