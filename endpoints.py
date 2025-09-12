@@ -1,11 +1,15 @@
 import os
-from datetime import date as Date
 from typing import List, Optional
 
 import polars as pl
 import psycopg2
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
+from datetime import date as Date
 from pydantic import BaseModel
+import time
+import uuid
+from dags.utils import get_logger
+
 
 # ---------- Config ----------
 SALES_DB_URL = os.environ.get("DATABASE_URL")
@@ -14,6 +18,7 @@ PROCESSED_DIR = os.environ.get("PROCESSED_DIR", "/opt/airflow/datasets/processed
 
 # ---------- FastAPI app ----------
 app = FastAPI(title="Sales Analytics API", version="1.0.0")
+api_log = get_logger(__name__, log_file="logs/api.log")
 
 
 # ---------- Pydantic models ----------
@@ -57,6 +62,25 @@ def _read_parquet(filename: str) -> pl.DataFrame:
 
 
 # ---------- Endpoints ----------
+@app.middleware("http")
+async def _log_requests(request: Request, call_next):
+    start_time = time.time()
+    corr_id = request.headers.get("x-correlation-id", str(uuid.uuid4()))
+    try:
+        response = await call_next(request)
+        duration_ms = int((time.time() - start_time) * 1000)
+        api_log.info(
+            f"{request.method} {request.url.path} -> {response.status_code} in {duration_ms}ms",
+        )
+        response.headers["x-correlation-id"] = corr_id
+        return response
+    except Exception as exc:
+        duration_ms = int((time.time() - start_time) * 1000)
+        api_log.error(
+            f"{request.method} {request.url.path} failed in {duration_ms}ms: {exc}",
+            exc_info=True,
+        )
+        raise
 @app.get("/sales/daily", response_model=DailySalesItem)
 def get_daily_sales(
     date: str = Query(..., description="Exact date in YYYY-MM-DD"),

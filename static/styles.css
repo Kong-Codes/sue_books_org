@@ -8,8 +8,8 @@ form { display: flex; align-items: center; gap: 8px; }
 .flash .error { background: #ffe0e0; color: #8a1f1f; }
 .card { border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 16px 0; }
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.metrics div { background: #f7f7f7; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
-.metrics span { color: #666; font-size: 0.9rem; }
+.metrics div { background: blue; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+.metrics span { color: red; font-size: 0.9rem; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e5e5; }
 

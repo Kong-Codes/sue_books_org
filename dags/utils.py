@@ -3,14 +3,16 @@ import os
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from typing import Sequence, Optional
+import polars as pl
 
 import numpy as np
-import polars as pl
 import psycopg2
 import psycopg2.extensions
 from dotenv import load_dotenv
 from psycopg2 import sql
 from psycopg2.extras import execute_values
+import requests
+import time
 
 load_dotenv()
 psycopg2.extensions.register_adapter(np.int64, psycopg2._psycopg.AsIs)
@@ -64,6 +66,43 @@ def get_logger(name: str, log_file: str = "app.log"):
 
 
 log = get_logger(__name__, log_file="logs/db_ops.log")
+
+
+def send_alert(title: str, details: dict):
+    """Send alert to webhook URL if configured."""
+    webhook_url = os.environ.get("ALERT_WEBHOOK_URL")
+    if not webhook_url:
+        return
+    
+    try:
+        payload = {
+            "title": title,
+            "details": details,
+            "timestamp": int(time.time() * 1000)
+        }
+        response = requests.post(webhook_url, json=payload, timeout=5)
+        response.raise_for_status()
+        log.info(f"Alert sent: {title}")
+    except Exception as exc:
+        log.error(f"Failed to send alert '{title}': {exc}", exc_info=True)
+
+
+def log_call(logger, op: str):
+    """Decorator to log function execution time and success/failure."""
+    def decorator(fn):
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            try:
+                result = fn(*args, **kwargs)
+                duration_ms = int((time.time() - start) * 1000)
+                logger.info(f"{op} completed successfully in {duration_ms}ms")
+                return result
+            except Exception as exc:
+                duration_ms = int((time.time() - start) * 1000)
+                logger.error(f"{op} failed in {duration_ms}ms: {exc}", exc_info=True)
+                raise
+        return wrapper
+    return decorator
 
 
 def check_and_create_db(target_dbname: str, url_env_var: str):

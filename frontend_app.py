@@ -1,9 +1,12 @@
 import os
 from datetime import date as Date
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 import requests
 from flask import Flask, render_template, request, redirect, url_for, flash
+import time
+import uuid
+from .dags.utils import get_logger
 
 
 def create_app() -> Flask:
@@ -11,14 +14,35 @@ def create_app() -> Flask:
     app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret")
 
     api_base_url = os.environ.get("API_BASE_URL", "http://localhost:8000")
+    log = get_logger(__name__, log_file="logs/frontend.log")
 
     def api_get(path: str, params: Dict[str, Any] | None = None):
+        start = time.time()
+        url = f"{api_base_url}{path}"
+        corr_id = str(uuid.uuid4())
         try:
-            resp = requests.get(f"{api_base_url}{path}", params=params, timeout=10)
+            resp = requests.get(url, params=params, timeout=10, headers={"x-correlation-id": corr_id})
+            dur = int((time.time() - start) * 1000)
             resp.raise_for_status()
+            log.info(f"GET {url} -> {resp.status_code} in {dur}ms")
             return resp.json(), None
         except requests.exceptions.RequestException as exc:
+            dur = int((time.time() - start) * 1000)
+            log.error(f"GET {url} failed in {dur}ms: {exc}")
             return None, str(exc)
+
+    @app.before_request
+    def _start_request_logging():
+        request._start_time = time.time()
+        request._corr_id = request.headers.get("x-correlation-id", str(uuid.uuid4()))
+
+    @app.after_request
+    def _finish_request_logging(response):
+        start = getattr(request, "_start_time", time.time())
+        dur = int((time.time() - start) * 1000)
+        log.info(f"{request.method} {request.path} -> {response.status_code} in {dur}ms")
+        response.headers["x-correlation-id"] = getattr(request, "_corr_id", "")
+        return response
 
     @app.get("/")
     def index():

@@ -28,6 +28,20 @@
 
     <main>
       <section class="card">
+        <h2>Go to User Purchases</h2>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <label for="user-id">User ID</label>
+          <input id="user-id" type="number" min="1" placeholder="e.g. 42" style="max-width:120px;">
+          <button type="button" onclick="
+            (function(){
+              var v = document.getElementById('user-id').value.trim();
+              if(v){ window.location.href = '/users/' + encodeURIComponent(v) + '/purchases'; }
+            })();
+          ">View Purchases</button>
+        </div>
+      </section>
+ 
+      <section class="card">
         <h2>Daily Sales ({{ date_str }})</h2>
         {% if sales %}
           <div class="metrics">
