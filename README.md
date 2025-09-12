@@ -73,7 +73,7 @@ Create a `.env` file in the project root:
 ```bash
 # Airflow Configuration
 AIRFLOW_UID=50000
-AIRFLOW_IMAGE_NAME=apache/airflow:2.10.2
+AIRFLOW_IMAGE_NAME=apache/airflow:3.0.6
 AIRFLOW_PROJ_DIR=.
 
 # Database Configuration
