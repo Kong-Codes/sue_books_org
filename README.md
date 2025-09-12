@@ -16,8 +16,10 @@ After collecting the file paths using XCom, I proceeded with transformation and 
 
 The ERD will be attached below for both the OLTP and OLAP schemas.
 
+OLTP ERD
 ![OLTP](images/oltp_erd.png)
 
+OLAP ERD
 ![OLAP](images/olap_erd.png)
 
 ### Loading
@@ -64,7 +66,6 @@ The easiest way to run the entire platform is using Docker Compose, which includ
 ### 1. Clone and Setup
 ```bash
 git clone https://github.com/Kong-Codes/sue_books_org.git
-cd sales_project
 ```
 
 ### 2. Create Environment File
