@@ -1,0 +1,10 @@
+{
+  "drift": {
+    "added_columns": [],
+    "drift_detected": false,
+    "nullability_changes": [],
+    "removed_columns": [],
+    "type_changes": []
+  },
+  "status": "baseline_created"
+}

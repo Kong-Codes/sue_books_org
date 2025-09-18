@@ -1,0 +1,15 @@
+{"timestamp":"2025-09-18T22:05:03.777218","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-18T22:05:03.783279","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-18T22:05:05.908885Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-18T22:05:05.909638Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-18T22:05:05.909899Z","level":"info","event":"Current task name:validate_schema","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-18T22:05:05.910167Z","level":"info","event":"Dag name:Sue_books_data_pipeline","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-18T22:05:06.095280","level":"info","event":"Baseline schema created for users at /opt/airflow/datasets/processed/schema/baselines/users.schema.json","logger":"schema_validation"}
+{"timestamp":"2025-09-18T22:05:06.099009","level":"info","event":"Baseline schema created for books at /opt/airflow/datasets/processed/schema/baselines/books.schema.json","logger":"schema_validation"}
+{"timestamp":"2025-09-18T22:05:06.103455","level":"info","event":"Baseline schema created for transactions at /opt/airflow/datasets/processed/schema/baselines/transactions.schema.json","logger":"schema_validation"}
+{"timestamp":"2025-09-18T22:05:06.103713","level":"info","event":"Schema validation result: {'datasets': {'users': {'status': 'baseline_created', 'drift': {'drift_detected': False, 'added_columns': [], 'removed_columns': [], 'type_changes': [], 'nullability_changes': []}}, 'books': {'status': 'baseline_created', 'drift': {'drift_detected': False, 'added_columns': [], 'removed_columns': [], 'type_changes': [], 'nullability_changes': []}}, 'transactions': {'status': 'baseline_created', 'drift': {'drift_detected': False, 'added_columns': [], 'removed_columns': [], 'type_changes': [], 'nullability_changes': []}}}, 'any_drift': False}","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-09-18T22:05:06.106032","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-09-18T22:05:06.264670","level":"info","event":"Task validate_schema in DAG Sue_books_data_pipeline completed successfully","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-09-18T22:05:06.266199Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-18T22:05:06.266844Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-18T22:05:06.267506Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): validate_schema>","chan":"stdout","logger":"task"}

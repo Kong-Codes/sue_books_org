@@ -13,11 +13,11 @@ from psycopg2 import sql
 from psycopg2.extras import execute_values
 import requests
 import time
+from datetime import datetime, timezone
 
 load_dotenv()
 psycopg2.extensions.register_adapter(np.int64, psycopg2._psycopg.AsIs)
 psycopg2.extensions.register_adapter(np.float64, psycopg2._psycopg.AsIs)
-
 
 SQL_DIR = Path(os.environ.get("SQL_DIR", "/opt/airflow/sql"))
 SQL_OLAP_FILE = SQL_DIR / "olap_schema.sql"
@@ -47,7 +47,7 @@ def get_logger(name: str, log_file: str = "app.log"):
     console_handler.setLevel(logging.INFO)
 
     # --- File handler (rotates when file > 5MB, keeps 5 backups) ---
-    file_handler = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=5)
+    file_handler = RotatingFileHandler(log_file, maxBytes=5 * 1024 * 1024, backupCount=5)
     file_handler.setLevel(logging.DEBUG)
 
     # --- Formatter ---
@@ -67,28 +67,66 @@ def get_logger(name: str, log_file: str = "app.log"):
 
 log = get_logger(__name__, log_file="logs/db_ops.log")
 
+logg = get_logger(__name__, log_file="logs/alerts.log")
 
-def send_alert(title: str, details: dict):
-    """Send alert to webhook URL if configured."""
+
+def _truncate(s: str, limit: int) -> str:
+    return s if len(s) <= limit else s[: limit - 1] + "…"
+
+
+def _to_iso8601(ts_ms: int) -> str:
+    return datetime.fromtimestamp(ts_ms / 1000, tz=timezone.utc).isoformat()
+
+
+def send_alert(title: str, details: dict, level: str = "info") -> bool:
+    """Send an alert to Discord via webhook URL in ALERT_WEBHOOK_URL."""
     webhook_url = os.environ.get("ALERT_WEBHOOK_URL")
     if not webhook_url:
-        return
-    
+        logg.warning("ALERT_WEBHOOK_URL not set; skipping alert.")
+        return False
+
+    # Build fields from details (Discord: 25 fields max; name<=256, value<=1024)
+    fields = []
+    for k, v in (details or {}).items():
+        if len(fields) >= 25:
+            break
+        name = _truncate(str(k), 256)
+        value = _truncate(str(v), 1024)
+        fields.append({"name": name, "value": value, "inline": True})
+
+    color_map = {"info": 0x2563EB, "warn": 0xF59E0B, "error": 0xDC2626}
+    ts_ms = int(time.time() * 1000)
+
+    payload = {
+        "username": "Alert Bot",
+        "embeds": [{
+            "title": _truncate(title, 256),
+            "timestamp": _to_iso8601(ts_ms),  # ISO8601 required by Discord
+            "color": color_map.get(level, color_map["info"]),
+            "fields": fields,
+        }],
+        # avoid accidental @everyone/@here pings
+        "allowed_mentions": {"parse": []},
+    }
+
     try:
-        payload = {
-            "title": title,
-            "details": details,
-            "timestamp": int(time.time() * 1000)
-        }
-        response = requests.post(webhook_url, json=payload, timeout=5)
-        response.raise_for_status()
-        log.info(f"Alert sent: {title}")
-    except Exception as exc:
-        log.error(f"Failed to send alert '{title}': {exc}", exc_info=True)
+        resp = requests.post(webhook_url, json=payload, timeout=5)
+        if resp.status_code == 429:
+            # Respect Discord rate limits
+            retry_after = resp.json().get("retry_after", 1)
+            logg.warning(f"Rate limited by Discord. Retry after {retry_after}s.")
+            return False
+        resp.raise_for_status()
+        logg.info(f"Discord alert sent: {title}")
+        return True
+    except requests.RequestException as exc:
+        logg.error(f"Failed to send Discord alert '{title}': {exc}", exc_info=True)
+        return False
 
 
 def log_call(logger, op: str):
     """Decorator to log function execution time and success/failure."""
+
     def decorator(fn):
         def wrapper(*args, **kwargs):
             start = time.time()
@@ -101,7 +139,9 @@ def log_call(logger, op: str):
                 duration_ms = int((time.time() - start) * 1000)
                 logger.error(f"{op} failed in {duration_ms}ms: {exc}", exc_info=True)
                 raise
+
         return wrapper
+
     return decorator
 
 
@@ -161,13 +201,13 @@ def get_db(db_url):
 
 
 def upsert_from_df(
-    conn,
-    df: pl.DataFrame,
-    table_name: str,
-    conflict_columns: Sequence[str],
-    update_columns: Optional[Sequence[str]] = None,
-    schema: str = "public",
-    chunk_size: int = 10_000,
+        conn,
+        df: pl.DataFrame,
+        table_name: str,
+        conflict_columns: Sequence[str],
+        update_columns: Optional[Sequence[str]] = None,
+        schema: str = "public",
+        chunk_size: int = 10_000,
 ):
     """
     Upserts a Polars DataFrame into a PostgreSQL table.
@@ -262,4 +302,3 @@ def create_tables(db_name, db_url):
     except Exception as e:
         log.error(f"Error creating tables: {e}", exc_info=True)
         conn.rollback()
-

@@ -8,17 +8,15 @@ from datetime import date as Date
 from pydantic import BaseModel
 import time
 import uuid
-from dags.utils import get_logger
-
+from dags.utils import get_logger, log_call
 
 # ---------- Config ----------
 SALES_DB_URL = os.environ.get("DATABASE_URL")
 PROCESSED_DIR = os.environ.get("PROCESSED_DIR", "/opt/airflow/datasets/processed")
 
-
 # ---------- FastAPI app ----------
 app = FastAPI(title="Sales Analytics API", version="1.0.0")
-api_log = get_logger(__name__, log_file="logs/api.log")
+api_log = get_logger(__name__, log_file="./logs/api.log")
 
 
 # ---------- Pydantic models ----------
@@ -45,7 +43,8 @@ class PurchaseItem(BaseModel):
 
 
 # ---------- Helpers ----------
-def _db_conn() -> Optional[psycopg2.extensions.connection]:
+@log_call(api_log, "DB Connection")
+def _db_conn():
     if not SALES_DB_URL:
         return None
     try:
@@ -54,6 +53,7 @@ def _db_conn() -> Optional[psycopg2.extensions.connection]:
         return None
 
 
+@log_call(api_log, "Read Parquet")
 def _read_parquet(filename: str) -> pl.DataFrame:
     path = os.path.join(PROCESSED_DIR, filename)
     if not os.path.exists(path):
@@ -81,9 +81,11 @@ async def _log_requests(request: Request, call_next):
             exc_info=True,
         )
         raise
+
+
 @app.get("/sales/daily", response_model=DailySalesItem)
 def get_daily_sales(
-    date: str = Query(..., description="Exact date in YYYY-MM-DD"),
+        date: str = Query(..., description="Exact date in YYYY-MM-DD"),
 ):
     # validate date
     try:
@@ -119,7 +121,7 @@ def get_daily_sales(
 
     # Fallback to parquet
     try:
-        df = _read_parquet("daily_sales.parquet")
+        df = _read_parquet("./datasets/processed/daily_sales.parquet")
         df = df.filter(pl.col("date") == anchor_date)
         if df.height == 0:
             raise HTTPException(status_code=404, detail="No sales found for the provided date")
@@ -143,7 +145,7 @@ def get_top_books(limit: int = Query(5, ge=1, le=100)):
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT b.book_id::int, f.revenue::float, f.num_sales::int, f.unique_buyers::int
+                    SELECT b.book_sk::int, f.revenue::float, f.num_sales::int, f.unique_buyers::int
                     FROM olap.fact_book_sales f
                     JOIN olap.dim_book b ON b.book_sk = f.book_id
                     ORDER BY f.revenue DESC, f.num_sales DESC
@@ -161,7 +163,7 @@ def get_top_books(limit: int = Query(5, ge=1, le=100)):
 
     # Fallback to parquet
     try:
-        df = _read_parquet("top_book.parquet")
+        df = _read_parquet("./datasets/processed/top_book.parquet")
         df = df.sort(["revenue", "num_sales"], descending=[True, True]).head(limit)
         df = df.select(["book_id", "revenue", "num_sales", "unique_buyers"])  # ensure columns
         return [
@@ -211,12 +213,12 @@ def get_user_purchases(user_id: int, limit: int = Query(100, ge=1, le=5000)):
 
     # Fallback to parquet
     try:
-        tx = _read_parquet("transactions_clean.parquet")
+        tx = _read_parquet("./datasets/processed/transactions_clean.parquet")
         tx = (
             tx.filter(pl.col("user_id") == user_id)
-              .sort("timestamp", descending=True)
-              .head(limit)
-              .select(["transaction_id", "book_id", "amount", "timestamp"])  # ensure columns
+            .sort("timestamp", descending=True)
+            .head(limit)
+            .select(["transaction_id", "book_id", "amount", "timestamp"])  # ensure columns
         )
         # Ensure timestamp becomes string
         out = []
@@ -242,5 +244,3 @@ def get_user_purchases(user_id: int, limit: int = Query(100, ge=1, le=5000)):
 # Uvicorn entrypoint
 def get_app():
     return app
-
-

@@ -14,7 +14,7 @@ def create_app() -> Flask:
     app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev-secret")
 
     api_base_url = os.environ.get("API_BASE_URL", "http://localhost:8000")
-    log = get_logger(__name__, log_file="logs/frontend.log")
+    log = get_logger(__name__, log_file="./logs/frontend.log")
 
     def api_get(path: str, params: Dict[str, Any] | None = None):
         start = time.time()

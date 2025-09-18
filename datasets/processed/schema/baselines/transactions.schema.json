@@ -1,0 +1,27 @@
+[
+  {
+    "name": "amount",
+    "nullable": false,
+    "type": "Float64"
+  },
+  {
+    "name": "book_id",
+    "nullable": false,
+    "type": "Int64"
+  },
+  {
+    "name": "timestamp",
+    "nullable": false,
+    "type": "Datetime(time_unit='us', time_zone=None)"
+  },
+  {
+    "name": "transaction_id",
+    "nullable": false,
+    "type": "Int64"
+  },
+  {
+    "name": "user_id",
+    "nullable": false,
+    "type": "Int64"
+  }
+]

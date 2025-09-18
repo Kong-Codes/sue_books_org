@@ -1,0 +1,32 @@
+[
+  {
+    "name": "email",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "id",
+    "nullable": false,
+    "type": "Int64"
+  },
+  {
+    "name": "location",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "name",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "signup_date",
+    "nullable": false,
+    "type": "Date"
+  },
+  {
+    "name": "social_security_number",
+    "nullable": false,
+    "type": "Int64"
+  }
+]

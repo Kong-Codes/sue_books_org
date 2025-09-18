@@ -1,0 +1,47 @@
+[
+  {
+    "name": "author",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "base_price",
+    "nullable": false,
+    "type": "Float64"
+  },
+  {
+    "name": "book_id",
+    "nullable": false,
+    "type": "Int64"
+  },
+  {
+    "name": "category",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "isbn",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "pages",
+    "nullable": false,
+    "type": "Int64"
+  },
+  {
+    "name": "publication_year",
+    "nullable": false,
+    "type": "Int64"
+  },
+  {
+    "name": "publisher",
+    "nullable": false,
+    "type": "String"
+  },
+  {
+    "name": "title",
+    "nullable": false,
+    "type": "String"
+  }
+]
