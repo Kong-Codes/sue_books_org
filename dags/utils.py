@@ -39,7 +39,8 @@ def get_logger(name: str, log_file: str = "app.log"):
     logger.setLevel(logging.DEBUG)  # Capture all levels
 
     # Prevent duplicate handlers if logger is called multiple times
-    if logger.hasHandlers():
+    # Only guard against duplicate handlers on this logger instance.
+    if logger.handlers:
         return logger
 
     # --- Console handler ---
@@ -227,16 +228,17 @@ def upsert_from_df(
         """Quote an identifier safely for Postgres."""
         return '"' + identifier.replace('"', '""') + '"'
 
-    df = df.unique(subset=conflict_columns, keep="last")
     if df is None or df.height == 0:
         log.warning(f"Skipping {schema}.{table_name}: DataFrame is empty or None.")
         return
 
-    # validate columns
+    # validate columns before any dataframe operations that rely on them
     cols = list(df.columns)
     missing_conflict = [c for c in conflict_columns if c not in cols]
     if missing_conflict:
         raise ValueError(f"conflict_columns not in DataFrame: {missing_conflict}")
+
+    df = df.unique(subset=conflict_columns, keep="last")
 
     # default update set = all non-conflict columns
     if update_columns is None:

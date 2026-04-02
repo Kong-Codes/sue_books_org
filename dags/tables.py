@@ -49,7 +49,7 @@ def clean_users_data(users) -> DataFrame:
 def clean_transactions_data(transactions, users) -> DataFrame:
     try:
         transactions = transactions.with_columns(
-            pl.col("book_id").replace("", None)
+            pl.col("book_id").cast(pl.Utf8).replace("", None)
         )
         transactions = transactions.with_columns(
             pl.col("user_id").str.replace("USER_", "").cast(pl.Int64),

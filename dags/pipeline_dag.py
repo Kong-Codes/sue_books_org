@@ -43,8 +43,6 @@ default_args = {
     'depends_on_past': False,
     'start_date': datetime(2025, 9, 10),
     'email': ['sadiquetimileyin@gmail.com'],
-    'email_on_failure': False,
-    'email_on_retry': False,
     'retries': 2,
     'retry_delay': timedelta(minutes=1)
 }

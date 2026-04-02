@@ -1,0 +1,42 @@
+2026-04-02 17:32:22 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 17:32:22 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 17:32:22 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 17:32:22 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 17:32:22 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 17:32:22 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Data loaded successfully.
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Data cleaning and transformation complete.
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Transformed data saved to files successfully.
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 17:32:23 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 17:32:24 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 17:32:24 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Data loaded successfully.
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Data cleaning and transformation complete.
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Transformed data saved to files successfully.
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 17:36:08 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 17:36:09 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 17:36:09 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1

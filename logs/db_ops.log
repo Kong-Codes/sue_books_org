@@ -1,0 +1,266 @@
+2026-04-02 17:30:48 | utils | ERROR | Failed to send Discord alert 'Schema Drift Detected': HTTPSConnectionPool(host='discord.com', port=443): Max retries exceeded with url: /api/webhooks/test (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 770, in connect
+    self._tunnel()
+    ~~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/http/client.py", line 981, in _tunnel
+    raise OSError(f"Tunnel connection failed: {code} {message.strip()}")
+OSError: Tunnel connection failed: 403 Forbidden
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='discord.com', port=443): Max retries exceeded with url: /api/webhooks/test (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 114, in send_alert
+    resp = requests.post(webhook_url, json=payload, timeout=5)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='discord.com', port=443): Max retries exceeded with url: /api/webhooks/test (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))
+2026-04-02 17:30:49 | sales_project.dags.utils | INFO | Discord alert sent: Test Alert
+2026-04-02 17:30:49 | sales_project.dags.utils | WARNING | ALERT_WEBHOOK_URL not set; skipping alert.
+2026-04-02 17:30:49 | sales_project.dags.utils | WARNING | Rate limited by Discord. Retry after 2s.
+2026-04-02 17:30:49 | sales_project.dags.utils | ERROR | Failed to send Discord alert 'Test Alert': Connection error
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 114, in send_alert
+    resp = requests.post(webhook_url, json=payload, timeout=5)
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+requests.exceptions.RequestException: Connection error
+2026-04-02 17:30:49 | sales_project.dags.utils | INFO | Discord alert sent: Info Alert
+2026-04-02 17:30:49 | sales_project.dags.utils | INFO | Discord alert sent: Warning Alert
+2026-04-02 17:30:49 | sales_project.dags.utils | INFO | Discord alert sent: Error Alert
+2026-04-02 17:30:49 | sales_project.dags.utils | WARNING | Note: Admin DB URL usually ends with '/postgres' for DB management.
+2026-04-02 17:30:49 | sales_project.dags.utils | INFO | Database 'test_db' created.
+2026-04-02 17:30:49 | sales_project.dags.utils | WARNING | Note: Admin DB URL usually ends with '/postgres' for DB management.
+2026-04-02 17:30:49 | sales_project.dags.utils | WARNING | Database 'test_db' already exists.
+2026-04-02 17:30:49 | sales_project.dags.utils | ERROR | Error connecting to DB: Connection failed
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 197, in get_db
+    conn = psycopg2.connect(db_url)
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: Connection failed
+2026-04-02 17:30:49 | sales_project.dags.utils | WARNING | Skipping public.test_table: DataFrame is empty or None.
+2026-04-02 17:30:49 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:30:49 | sales_project.dags.utils | ERROR | Failed to upsert into public.test_table: <MagicMock name='mock.cursor().__enter__().connection.encoding' id='4612200096'>
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 278, in upsert_from_df
+    execute_values(cur, insert_sql, values, page_size=chunk_size)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/psycopg2/extras.py", line 1287, in execute_values
+    sql = sql.encode(_ext.encodings[cur.connection.encoding])
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: <MagicMock name='mock.cursor().__enter__().connection.encoding' id='4612200096'>
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | 2 records upserted into public.test_table
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | Preparing to upsert 25000 rows into public.test_table...
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | 25000 records upserted into public.test_table
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:30:50 | sales_project.dags.utils | ERROR | Failed to upsert into public.test_table: SQL Error
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 267, in upsert_from_df
+    with conn.cursor() as cur:
+         ~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: SQL Error
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | Tables created successfully.
+2026-04-02 17:30:50 | sales_project.dags.utils | INFO | OLAP Tables: ['dim_user']
+2026-04-02 17:30:50 | sales_project.dags.utils | ERROR | Error creating tables: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 293, in create_tables
+    with open(SQL_OLAP_FILE, "r") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'
+2026-04-02 17:31:09 | utils | ERROR | Failed to send Discord alert 'Schema Drift Detected': HTTPSConnectionPool(host='discord.com', port=443): Max retries exceeded with url: /api/webhooks/test (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10e834590>: Failed to establish a new connection: [Errno 1] Operation not permitted')))
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+PermissionError: [Errno 1] Operation not permitted
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 773, in urlopen
+    self._prepare_proxy(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 1042, in _prepare_proxy
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x10e834590>: Failed to establish a new connection: [Errno 1] Operation not permitted
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10e834590>: Failed to establish a new connection: [Errno 1] Operation not permitted'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='discord.com', port=443): Max retries exceeded with url: /api/webhooks/test (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10e834590>: Failed to establish a new connection: [Errno 1] Operation not permitted')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 114, in send_alert
+    resp = requests.post(webhook_url, json=payload, timeout=5)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/adapters.py", line 671, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='discord.com', port=443): Max retries exceeded with url: /api/webhooks/test (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x10e834590>: Failed to establish a new connection: [Errno 1] Operation not permitted')))
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Discord alert sent: Test Alert
+2026-04-02 17:31:10 | sales_project.dags.utils | WARNING | ALERT_WEBHOOK_URL not set; skipping alert.
+2026-04-02 17:31:10 | sales_project.dags.utils | WARNING | Rate limited by Discord. Retry after 2s.
+2026-04-02 17:31:10 | sales_project.dags.utils | ERROR | Failed to send Discord alert 'Test Alert': Connection error
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 114, in send_alert
+    resp = requests.post(webhook_url, json=payload, timeout=5)
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+requests.exceptions.RequestException: Connection error
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Discord alert sent: Info Alert
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Discord alert sent: Warning Alert
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Discord alert sent: Error Alert
+2026-04-02 17:31:10 | sales_project.dags.utils | WARNING | Note: Admin DB URL usually ends with '/postgres' for DB management.
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Database 'test_db' created.
+2026-04-02 17:31:10 | sales_project.dags.utils | WARNING | Note: Admin DB URL usually ends with '/postgres' for DB management.
+2026-04-02 17:31:10 | sales_project.dags.utils | WARNING | Database 'test_db' already exists.
+2026-04-02 17:31:10 | sales_project.dags.utils | ERROR | Error connecting to DB: Connection failed
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 197, in get_db
+    conn = psycopg2.connect(db_url)
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: Connection failed
+2026-04-02 17:31:10 | sales_project.dags.utils | WARNING | Skipping public.test_table: DataFrame is empty or None.
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | 2 records upserted into public.test_table
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | 2 records upserted into public.test_table
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Preparing to upsert 25000 rows into public.test_table...
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | 25000 records upserted into public.test_table
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:31:10 | sales_project.dags.utils | ERROR | Failed to upsert into public.test_table: SQL Error
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 267, in upsert_from_df
+    with conn.cursor() as cur:
+         ~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: SQL Error
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | Tables created successfully.
+2026-04-02 17:31:10 | sales_project.dags.utils | INFO | OLAP Tables: ['dim_user']
+2026-04-02 17:31:10 | sales_project.dags.utils | ERROR | Error creating tables: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 293, in create_tables
+    with open(SQL_OLAP_FILE, "r") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'

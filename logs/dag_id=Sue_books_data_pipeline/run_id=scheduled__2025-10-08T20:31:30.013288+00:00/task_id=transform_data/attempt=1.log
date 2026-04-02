@@ -1,0 +1,19 @@
+{"timestamp":"2025-10-09T16:03:15.451745","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-10-09T16:03:15.456137","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-10-09T16:03:16.382425Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-10-09T16:03:16.382821Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-10-09T16:03:16.383373Z","level":"info","event":"Current task name:transform_data","chan":"stdout","logger":"task"}
+{"timestamp":"2025-10-09T16:03:16.383570Z","level":"info","event":"Dag name:Sue_books_data_pipeline","chan":"stdout","logger":"task"}
+{"timestamp":"2025-10-09T16:03:16.992334","level":"info","event":"Data loaded successfully.","logger":"tables"}
+{"timestamp":"2025-10-09T16:03:17.027816","level":"info","event":"Users data cleaned successfully. Total records: 904","logger":"tables"}
+{"timestamp":"2025-10-09T16:03:17.248385","level":"info","event":"Transactions data cleaned successfully. Total records: 78484","logger":"tables"}
+{"timestamp":"2025-10-09T16:03:17.269343","level":"info","event":"Daily sales table created successfully. Total records: 545","logger":"tables"}
+{"timestamp":"2025-10-09T16:03:17.307565","level":"info","event":"Data cleaning and transformation complete.","logger":"tables"}
+{"timestamp":"2025-10-09T16:03:17.663251","level":"info","event":"Transformed data saved to files successfully.","logger":"tables"}
+{"timestamp":"2025-10-09T16:03:17.664497","level":"info","event":"Transformed data: 5 outputs created","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-10-09T16:03:17.665231","level":"info","event":"Done. Returned value was: {'users': '/opt/airflow/datasets/processed/users_clean.parquet', 'transactions': '/opt/airflow/datasets/processed/transactions_clean.parquet', 'books': '/opt/airflow/datasets/processed/books_clean.parquet', 'daily_sales': '/opt/airflow/datasets/processed/daily_sales.parquet', 'top_book': '/opt/airflow/datasets/processed/top_book.parquet'}","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-10-09T16:03:17.666486","level":"info","event":"Pushing xcom","ti":"RuntimeTaskInstance(id=UUID('0199c9b3-4bdb-750c-a04c-2c1a96a65cf1'), task_id='transform_data', dag_id='Sue_books_data_pipeline', run_id='scheduled__2025-10-08T20:31:30.013288+00:00', try_number=1, map_index=-1, hostname='e4f66706ea0c', context_carrier={}, task=<Task(_PythonDecoratedOperator): transform_data>, bundle_instance=LocalDagBundle(name=dags-folder), max_tries=2, start_date=datetime.datetime(2025, 10, 9, 16, 3, 13, 413877, tzinfo=datetime.timezone.utc), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None, log_url='http://localhost:8080/dags/Sue_books_data_pipeline/runs/scheduled__2025-10-08T20%3A31%3A30.013288%2B00%3A00/tasks/transform_data?try_number=1')","logger":"task"}
+{"timestamp":"2025-10-09T16:03:17.766779","level":"info","event":"Task transform_data in DAG Sue_books_data_pipeline completed successfully","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-10-09T16:03:17.767406Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-10-09T16:03:17.767632Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-10-09T16:03:17.768746Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): transform_data>","chan":"stdout","logger":"task"}

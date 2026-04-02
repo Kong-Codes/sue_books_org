@@ -6,5 +6,5 @@
     "removed_columns": [],
     "type_changes": []
   },
-  "status": "baseline_created"
+  "status": "no_drift"
 }

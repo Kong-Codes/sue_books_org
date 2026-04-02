@@ -1,0 +1,12 @@
+{"timestamp":"2025-09-20T11:30:18.473941","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-09-20T11:30:18.486705","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/pipeline_dag.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-09-20T11:30:21.311735Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-20T11:30:21.311982Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-20T11:30:21.312134Z","level":"info","event":"Current task name:validate_schema","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-20T11:30:21.312258Z","level":"info","event":"Dag name:Sue_books_data_pipeline","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-20T11:30:21.547738","level":"info","event":"Schema validation result: {'datasets': {'users': {'status': 'no_drift', 'drift': {'drift_detected': False, 'added_columns': [], 'removed_columns': [], 'type_changes': [], 'nullability_changes': []}}, 'books': {'status': 'no_drift', 'drift': {'drift_detected': False, 'added_columns': [], 'removed_columns': [], 'type_changes': [], 'nullability_changes': []}}, 'transactions': {'status': 'no_drift', 'drift': {'drift_detected': False, 'added_columns': [], 'removed_columns': [], 'type_changes': [], 'nullability_changes': []}}}, 'any_drift': False}","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-09-20T11:30:21.552712","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator"}
+{"timestamp":"2025-09-20T11:30:21.629955","level":"info","event":"Task validate_schema in DAG Sue_books_data_pipeline completed successfully","logger":"unusual_prefix_8339c30b0c19c7937642fad9c6553d70d0a44d21_pipeline_dag"}
+{"timestamp":"2025-09-20T11:30:21.630550Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-20T11:30:21.636459Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-09-20T11:30:21.636815Z","level":"info","event":"Task operator:<Task(_PythonDecoratedOperator): validate_schema>","chan":"stdout","logger":"task"}

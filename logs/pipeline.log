@@ -1,0 +1,6 @@
+2026-04-02 17:30:47 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 17:30:47 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 17:30:47 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 17:31:09 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 17:31:09 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 17:31:09 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed

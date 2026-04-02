@@ -53,7 +53,7 @@ CREATE INDEX IF NOT EXISTS ftx_date_key ON olap.fact_transactions(date_sk);
 
 -- Daily Sales Summary
 CREATE TABLE IF NOT EXISTS olap.fact_daily_sales (
-  date_key         INT PRIMARY KEY REFERENCES olap.dim_date(date_sk),
+  date_key         INT PRIMARY KEY REFERENCES olap.fact_transactions(date_sk),
   revenue          NUMERIC(14,2) NOT NULL,
   num_transactions BIGINT        NOT NULL,
   active_users     BIGINT        NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS olap.fact_daily_sales (
 
 -- Top Books Summary
 CREATE TABLE IF NOT EXISTS olap.fact_book_sales (
-  book_id      BIGINT PRIMARY KEY REFERENCES olap.dim_book(book_sk),
+  book_id      BIGINT PRIMARY KEY REFERENCES olap.fact_transactions(book_sk),
   revenue       NUMERIC(14,2) NOT NULL,
   num_sales     BIGINT        NOT NULL,
   unique_buyers BIGINT        NOT NULL
