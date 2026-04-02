@@ -449,13 +449,13 @@ class TestTransformData:
     def test_transform_data_flow(self, mocker):
         """Test the complete transform_data flow"""
         # Setup mocks
-        mock_load_data = mocker.patch('sales_project.dags.tables.load_data')
-        mock_clean_users = mocker.patch('sales_project.dags.tables.clean_users_data')
-        mock_clean_transactions = mocker.patch('sales_project.dags.tables.clean_transactions_data')
-        mock_clean_books = mocker.patch('sales_project.dags.tables.clean_books_data')
-        mock_daily_sales = mocker.patch('sales_project.dags.tables.daily_sales_table')
-        mock_top_books = mocker.patch('sales_project.dags.tables.top_books')
-        mocker.patch('sales_project.dags.tables.os.makedirs')
+        mock_load_data = mocker.patch('dags.tables.load_data')
+        mock_clean_users = mocker.patch('dags.tables.clean_users_data')
+        mock_clean_transactions = mocker.patch('dags.tables.clean_transactions_data')
+        mock_clean_books = mocker.patch('dags.tables.clean_books_data')
+        mock_daily_sales = mocker.patch('dags.tables.daily_sales_table')
+        mock_top_books = mocker.patch('dags.tables.top_books')
+        mocker.patch('dags.tables.os.makedirs')
         mocker.patch.object(pl.DataFrame, "write_parquet", autospec=True)
         
         mock_users = pl.DataFrame({"id": [1], "name": ["Alice"], "email": ["alice@test.com"],

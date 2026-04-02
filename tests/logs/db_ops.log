@@ -146,3 +146,77 @@ Traceback (most recent call last):
     with open(SQL_OLAP_FILE, "r") as f:
          ~~~~^^^^^^^^^^^^^^^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'
+2026-04-02 17:59:51 | utils | ERROR | Failed to send Discord alert 'Schema Drift Detected': 405 Client Error: Method Not Allowed for url: https://discord.com/api/webhooks/test
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 120, in send_alert
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 405 Client Error: Method Not Allowed for url: https://discord.com/api/webhooks/test
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Discord alert sent: Test Alert
+2026-04-02 17:59:52 | sales_project.dags.utils | WARNING | ALERT_WEBHOOK_URL not set; skipping alert.
+2026-04-02 17:59:52 | sales_project.dags.utils | WARNING | Rate limited by Discord. Retry after 2s.
+2026-04-02 17:59:52 | sales_project.dags.utils | ERROR | Failed to send Discord alert 'Test Alert': Connection error
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 114, in send_alert
+    resp = requests.post(webhook_url, json=payload, timeout=5)
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+requests.exceptions.RequestException: Connection error
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Discord alert sent: Info Alert
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Discord alert sent: Warning Alert
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Discord alert sent: Error Alert
+2026-04-02 17:59:52 | sales_project.dags.utils | WARNING | Note: Admin DB URL usually ends with '/postgres' for DB management.
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Database 'test_db' created.
+2026-04-02 17:59:52 | sales_project.dags.utils | WARNING | Note: Admin DB URL usually ends with '/postgres' for DB management.
+2026-04-02 17:59:52 | sales_project.dags.utils | WARNING | Database 'test_db' already exists.
+2026-04-02 17:59:52 | sales_project.dags.utils | ERROR | Error connecting to DB: Connection failed
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 197, in get_db
+    conn = psycopg2.connect(db_url)
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: Connection failed
+2026-04-02 17:59:52 | sales_project.dags.utils | WARNING | Skipping public.test_table: DataFrame is empty or None.
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | 2 records upserted into public.test_table
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | 2 records upserted into public.test_table
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Preparing to upsert 25000 rows into public.test_table...
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | 25000 records upserted into public.test_table
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Preparing to upsert 2 rows into public.test_table...
+2026-04-02 17:59:52 | sales_project.dags.utils | ERROR | Failed to upsert into public.test_table: SQL Error
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 267, in upsert_from_df
+    with conn.cursor() as cur:
+         ~~~~~~~~~~~^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/unittest/mock.py", line 1228, in _execute_mock_call
+    raise effect
+Exception: SQL Error
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | Tables created successfully.
+2026-04-02 17:59:52 | sales_project.dags.utils | INFO | OLAP Tables: ['dim_user']
+2026-04-02 17:59:52 | sales_project.dags.utils | ERROR | Error creating tables: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/utils.py", line 293, in create_tables
+    with open(SQL_OLAP_FILE, "r") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/opt/airflow/sql/olap_schema.sql'

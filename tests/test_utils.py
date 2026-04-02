@@ -98,7 +98,7 @@ class TestSendAlert:
     def test_send_alert_success(self, mocker):
         """Test successful alert sending"""
         mocker.patch.dict(os.environ, {'ALERT_WEBHOOK_URL': 'https://discord.com/api/webhooks/test'})
-        mock_post = mocker.patch('sales_project.dags.utils.requests.post')
+        mock_post = mocker.patch('dags.utils.requests.post')
         
         mock_response = mocker.Mock()
         mock_response.status_code = 204
@@ -118,7 +118,7 @@ class TestSendAlert:
     def test_send_alert_rate_limited(self, mocker):
         """Test alert when rate limited by Discord"""
         mocker.patch.dict(os.environ, {'ALERT_WEBHOOK_URL': 'https://discord.com/api/webhooks/test'})
-        mock_post = mocker.patch('sales_project.dags.utils.requests.post')
+        mock_post = mocker.patch('dags.utils.requests.post')
         
         mock_response = mocker.Mock()
         mock_response.status_code = 429
@@ -131,7 +131,7 @@ class TestSendAlert:
     def test_send_alert_request_exception(self, mocker):
         """Test alert when request fails"""
         mocker.patch.dict(os.environ, {'ALERT_WEBHOOK_URL': 'https://discord.com/api/webhooks/test'})
-        mock_post = mocker.patch('sales_project.dags.utils.requests.post')
+        mock_post = mocker.patch('dags.utils.requests.post')
         
         mock_post.side_effect = requests.RequestException("Connection error")
         
@@ -141,7 +141,7 @@ class TestSendAlert:
     def test_send_alert_with_different_levels(self, mocker):
         """Test alert with different severity levels"""
         mocker.patch.dict(os.environ, {'ALERT_WEBHOOK_URL': 'https://discord.com/api/webhooks/test'})
-        mock_post = mocker.patch('sales_project.dags.utils.requests.post')
+        mock_post = mocker.patch('dags.utils.requests.post')
         
         mock_response = mocker.Mock()
         mock_response.status_code = 204
@@ -190,7 +190,7 @@ class TestCheckAndCreateDb:
     
     def test_check_and_create_db_creates_new_db(self, mocker):
         """Test that function creates database if it doesn't exist"""
-        mock_connect = mocker.patch('sales_project.dags.utils.psycopg2.connect')
+        mock_connect = mocker.patch('dags.utils.psycopg2.connect')
         mock_conn = mocker.Mock()
         mock_cur = mocker.Mock()
         mock_cur.fetchone.return_value = None  # DB doesn't exist
@@ -204,7 +204,7 @@ class TestCheckAndCreateDb:
     
     def test_check_and_create_db_db_exists(self, mocker):
         """Test that function doesn't create database if it exists"""
-        mock_connect = mocker.patch('sales_project.dags.utils.psycopg2.connect')
+        mock_connect = mocker.patch('dags.utils.psycopg2.connect')
         mock_conn = mocker.Mock()
         mock_cur = mocker.Mock()
         mock_cur.fetchone.return_value = (1,)  # DB exists
@@ -228,7 +228,7 @@ class TestGetDb:
     
     def test_get_db_success(self, mocker):
         """Test successful database connection"""
-        mock_connect = mocker.patch('sales_project.dags.utils.psycopg2.connect')
+        mock_connect = mocker.patch('dags.utils.psycopg2.connect')
         mock_conn = mocker.Mock()
         mock_connect.return_value = mock_conn
         
@@ -238,7 +238,7 @@ class TestGetDb:
     
     def test_get_db_connection_error(self, mocker):
         """Test database connection error handling"""
-        mock_connect = mocker.patch('sales_project.dags.utils.psycopg2.connect')
+        mock_connect = mocker.patch('dags.utils.psycopg2.connect')
         mock_connect.side_effect = Exception("Connection failed")
         
         with pytest.raises(Exception):
@@ -273,7 +273,7 @@ class TestUpsertFromDf:
     
     def test_upsert_from_df_duplicates(self, mocker):
         """Test upsert handles duplicate rows"""
-        mocker.patch('sales_project.dags.utils.execute_values')
+        mocker.patch('dags.utils.execute_values')
         mock_conn = mocker.MagicMock()
         mock_cur = mocker.MagicMock()
         mock_conn.cursor.return_value = mock_cur
@@ -287,7 +287,7 @@ class TestUpsertFromDf:
     
     def test_upsert_from_df_with_update_columns(self, mocker):
         """Test upsert with specific update columns"""
-        mocker.patch('sales_project.dags.utils.execute_values')
+        mocker.patch('dags.utils.execute_values')
         mock_conn = mocker.MagicMock()
         mock_cur = mocker.MagicMock()
         mock_conn.cursor.return_value.__enter__.return_value = mock_cur
@@ -300,7 +300,7 @@ class TestUpsertFromDf:
     
     def test_upsert_from_df_chunking(self, mocker):
         """Test upsert with chunking for large datasets"""
-        mock_execute_values = mocker.patch('sales_project.dags.utils.execute_values')
+        mock_execute_values = mocker.patch('dags.utils.execute_values')
         mock_conn = mocker.MagicMock()
         mock_cur = mocker.MagicMock()
         mock_conn.cursor.return_value.__enter__.return_value = mock_cur
@@ -335,8 +335,8 @@ class TestCreateTables:
     def test_create_tables_success(self, mocker):
         """Test successful table creation"""
         mock_open = mocker.patch('builtins.open', create=True)
-        mock_check_db = mocker.patch('sales_project.dags.utils.check_and_create_db')
-        mock_get_db = mocker.patch('sales_project.dags.utils.get_db')
+        mock_check_db = mocker.patch('dags.utils.check_and_create_db')
+        mock_get_db = mocker.patch('dags.utils.get_db')
         
         mock_conn = mocker.Mock()
         mock_cur = mocker.Mock()
@@ -357,8 +357,8 @@ class TestCreateTables:
     
     def test_create_tables_error_handling(self, mocker):
         """Test table creation error handling"""
-        mocker.patch('sales_project.dags.utils.check_and_create_db')
-        mock_get_db = mocker.patch('sales_project.dags.utils.get_db')
+        mocker.patch('dags.utils.check_and_create_db')
+        mock_get_db = mocker.patch('dags.utils.get_db')
         
         mock_conn = mocker.Mock()
         mock_cur = mocker.Mock()
