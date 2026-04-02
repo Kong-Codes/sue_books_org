@@ -1,11 +1,9 @@
 """
 Tests for schema_validation.py module
 """
-import os
 import pytest
 import polars as pl
 import json
-import tempfile
 from ..dags.schema_validation import (
     _polars_dtype_to_str,
     infer_schema,
@@ -349,8 +347,7 @@ class TestValidateAndReport:
     def test_validate_and_report_creates_baseline(self, tmp_path):
         """Test that function creates baseline for new dataset"""
         baselines_dir = tmp_path / "baselines"
-        reports_dir = tmp_path / "reports"
-        
+
         df = pl.DataFrame({
             "id": [1, 2, 3],
             "name": ["Alice", "Bob", "Charlie"]
@@ -427,9 +424,6 @@ class TestValidateAndReport:
     
     def test_validate_and_report_multiple_datasets(self, tmp_path):
         """Test validation with multiple datasets"""
-        baselines_dir = tmp_path / "baselines"
-        reports_dir = tmp_path / "reports"
-        
         df1 = pl.DataFrame({"id": [1, 2], "name": ["A", "B"]})
         df2 = pl.DataFrame({"product_id": [101, 102], "price": [10.0, 20.0]})
         
@@ -446,7 +440,6 @@ class TestValidateAndReport:
     
     def test_validate_and_report_creates_reports(self, tmp_path):
         """Test that function creates report files"""
-        baselines_dir = tmp_path / "baselines"
         reports_dir = tmp_path / "reports"
         
         df = pl.DataFrame({

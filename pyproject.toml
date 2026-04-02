@@ -21,3 +21,13 @@ dependencies = [
 
 [tool.pytest.ini_options]
 pythonpath = ["dags"]
+
+[tool.ruff]
+target-version = "py313"
+
+[tool.ruff.lint.per-file-ignores]
+# load_dotenv() before local imports is intentional for Airflow DAG loading.
+"dags/pipeline_dag.py" = ["E402"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["dags"]

@@ -4,8 +4,6 @@ Pytest configuration and shared fixtures
 import pytest
 import polars as pl
 import os
-import tempfile
-from pathlib import Path
 
 
 @pytest.fixture

@@ -1,7 +1,6 @@
 """
 Tests for pipeline_dag.py module
 """
-import pytest
 from datetime import datetime
 from ..dags.pipeline_dag import (
     on_task_success,

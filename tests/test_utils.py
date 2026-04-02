@@ -5,7 +5,6 @@ import os
 import pytest
 import tempfile
 import polars as pl
-import numpy as np
 import requests
 from ..dags.utils import (
     get_logger,
@@ -288,7 +287,7 @@ class TestUpsertFromDf:
     
     def test_upsert_from_df_with_update_columns(self, mocker):
         """Test upsert with specific update columns"""
-        mock_execute_values = mocker.patch('sales_project.dags.utils.execute_values')
+        mocker.patch('sales_project.dags.utils.execute_values')
         mock_conn = mocker.MagicMock()
         mock_cur = mocker.MagicMock()
         mock_conn.cursor.return_value.__enter__.return_value = mock_cur
@@ -358,7 +357,7 @@ class TestCreateTables:
     
     def test_create_tables_error_handling(self, mocker):
         """Test table creation error handling"""
-        mock_check_db = mocker.patch('sales_project.dags.utils.check_and_create_db')
+        mocker.patch('sales_project.dags.utils.check_and_create_db')
         mock_get_db = mocker.patch('sales_project.dags.utils.get_db')
         
         mock_conn = mocker.Mock()

@@ -1,8 +1,6 @@
 """
 Tests for tables.py module
 """
-import os
-import pytest
 import polars as pl
 from ..dags.tables import (
     load_data,
