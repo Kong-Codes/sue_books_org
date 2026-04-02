@@ -15,8 +15,11 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+# `setup-uv` (enable-cache) and Docker Buildx `type=gha` need Actions cache read/write.
+# With only `contents: read`, unset scopes default to none and cache steps fail the job.
 permissions:
   contents: read
+  actions: write
 
 defaults:
   run:
