@@ -70,5 +70,5 @@ openai~=1.83.0
 executing~=1.2.0
 asttokens~=2.4.0
 python-multipart~=0.0.9
-arrow~=1.2.3
+arrow~=1.4.0
 passlib~=1.7.4
