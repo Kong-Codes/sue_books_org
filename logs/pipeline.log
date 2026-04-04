@@ -13,3 +13,29 @@
 2026-04-02 19:00:34 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
 2026-04-02 19:00:34 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
 2026-04-02 19:00:34 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:18:31 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:20:38 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:20:38 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:20:41 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:21:16 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:21:16 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:21:17 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:22:11 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:22:11 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:22:11 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:22:46 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:22:46 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:22:46 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:23:11 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:23:11 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:23:13 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:23:44 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:24:50 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:24:50 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:24:51 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:31:35 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:31:35 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:31:35 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:33:40 | sales_project.dags.pipeline_dag | INFO | Task test_task in DAG test_dag completed successfully
+2026-04-02 19:33:40 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed
+2026-04-02 19:33:41 | sales_project.dags.pipeline_dag | ERROR | Task test_task in DAG test_dag failed

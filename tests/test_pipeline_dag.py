@@ -34,7 +34,7 @@ class TestOnTaskFailure:
     
     def test_on_task_failure_sends_alert(self, mocker):
         """Test that callback sends alert on task failure"""
-        mock_send_alert = mocker.patch('dags.pipeline_dag.send_alert')
+        mock_send_alert = mocker.patch('sue_books_org.dags.pipeline_dag.send_alert')
         
         # Mock task instance
         mock_ti = mocker.Mock()
@@ -58,7 +58,7 @@ class TestOnTaskFailure:
     
     def test_on_task_failure_without_log_url(self, mocker):
         """Test that callback handles missing log_url gracefully"""
-        mock_send_alert = mocker.patch('dags.pipeline_dag.send_alert')
+        mock_send_alert = mocker.patch('sue_books_org.dags.pipeline_dag.send_alert')
         
         # Simple object without log_url attribute
         class MockTI:
@@ -140,7 +140,7 @@ class TestExtractDataTask:
     
     def test_extract_data_calls_load_tables(self, mocker):
         """Test that extract_data calls load_tables"""
-        mock_load_tables = mocker.patch('dags.pipeline_dag.load_tables')
+        mock_load_tables = mocker.patch('sue_books_org.dags.pipeline_dag.load_tables')
         mock_load_tables.return_value = {
             'users': '/path/to/users.csv',
             'transactions': '/path/to/transactions.csv',

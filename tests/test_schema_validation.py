@@ -457,7 +457,7 @@ class TestValidateAndReport:
     
     def test_validate_and_report_sends_alert_on_drift(self, mocker, tmp_path):
         """Test that function sends alert when drift is detected"""
-        mock_send_alert = mocker.patch('dags.schema_validation.send_alert')
+        mock_send_alert = mocker.patch('sue_books_org.dags.schema_validation.send_alert')
         
         baselines_dir = tmp_path / "baselines"
         reports_dir = tmp_path / "reports"
@@ -493,7 +493,7 @@ class TestValidateAndReport:
     
     def test_validate_and_report_no_alert_on_no_drift(self, mocker, tmp_path):
         """Test that function doesn't send alert when there's no drift"""
-        mock_send_alert = mocker.patch('dags.schema_validation.send_alert')
+        mock_send_alert = mocker.patch('sue_books_org.dags.schema_validation.send_alert')
         
         baselines_dir = tmp_path / "baselines"
         reports_dir = tmp_path / "reports"

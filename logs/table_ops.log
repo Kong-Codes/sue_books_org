@@ -103,3 +103,320 @@
 2026-04-02 19:00:37 | sales_project.dags.tables | INFO | Dimension tables created successfully.
 2026-04-02 19:00:37 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
 2026-04-02 19:00:37 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:20:44 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:20:44 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:20:44 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:20:44 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:20:45 | sales_project.dags.tables | ERROR | Error in transform_data: No such file or directory (os error 2): users.csv
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 152, in transform_data
+    users = load_data(users_data_path)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 22, in load_data
+    df = pl.read_csv(data)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 549, in read_csv
+    df = _read_csv_impl(
+        data,
+    ...<27 lines>...
+        glob=glob,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 697, in _read_csv_impl
+    pydf = PyDataFrame.read_csv(
+        source,
+    ...<28 lines>...
+        schema=schema,
+    )
+FileNotFoundError: No such file or directory (os error 2): users.csv
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:20:45 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:21:20 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:21:20 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:21:20 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:21:20 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:21:21 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:21:21 | sales_project.dags.tables | ERROR | Error in transform_data: No such file or directory (os error 2): users.csv
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 152, in transform_data
+    users = load_data(users_data_path)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 22, in load_data
+    df = pl.read_csv(data)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 549, in read_csv
+    df = _read_csv_impl(
+        data,
+    ...<27 lines>...
+        glob=glob,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 697, in _read_csv_impl
+    pydf = PyDataFrame.read_csv(
+        source,
+    ...<28 lines>...
+        schema=schema,
+    )
+FileNotFoundError: No such file or directory (os error 2): users.csv
+2026-04-02 19:21:22 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:21:22 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:21:22 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:21:22 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:21:22 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:22:14 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:22:15 | sales_project.dags.tables | ERROR | Error in transform_data: No such file or directory (os error 2): users.csv
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 152, in transform_data
+    users = load_data(users_data_path)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 22, in load_data
+    df = pl.read_csv(data)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 549, in read_csv
+    df = _read_csv_impl(
+        data,
+    ...<27 lines>...
+        glob=glob,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 697, in _read_csv_impl
+    pydf = PyDataFrame.read_csv(
+        source,
+    ...<28 lines>...
+        schema=schema,
+    )
+FileNotFoundError: No such file or directory (os error 2): users.csv
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:22:15 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:22:50 | sales_project.dags.tables | ERROR | Error in transform_data: No such file or directory (os error 2): users.csv
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 152, in transform_data
+    users = load_data(users_data_path)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 22, in load_data
+    df = pl.read_csv(data)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 549, in read_csv
+    df = _read_csv_impl(
+        data,
+    ...<27 lines>...
+        glob=glob,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 697, in _read_csv_impl
+    pydf = PyDataFrame.read_csv(
+        source,
+    ...<28 lines>...
+        schema=schema,
+    )
+FileNotFoundError: No such file or directory (os error 2): users.csv
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:22:50 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:23:17 | sales_project.dags.tables | ERROR | Error in transform_data: No such file or directory (os error 2): users.csv
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 152, in transform_data
+    users = load_data(users_data_path)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 22, in load_data
+    df = pl.read_csv(data)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 549, in read_csv
+    df = _read_csv_impl(
+        data,
+    ...<27 lines>...
+        glob=glob,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 697, in _read_csv_impl
+    pydf = PyDataFrame.read_csv(
+        source,
+    ...<28 lines>...
+        schema=schema,
+    )
+FileNotFoundError: No such file or directory (os error 2): users.csv
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:23:17 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:23:18 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:23:18 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:23:45 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:24:54 | sales_project.dags.tables | ERROR | Error in transform_data: No such file or directory (os error 2): users.csv
+Traceback (most recent call last):
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 152, in transform_data
+    users = load_data(users_data_path)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/dags/tables.py", line 22, in load_data
+    df = pl.read_csv(data)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/_utils/deprecation.py", line 128, in wrapper
+    return function(*args, **kwargs)
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 549, in read_csv
+    df = _read_csv_impl(
+        data,
+    ...<27 lines>...
+        glob=glob,
+    )
+  File "/Users/mac/PycharmProjects/sales_platform/sales_project/.venv/lib/python3.13/site-packages/polars/io/csv/functions.py", line 697, in _read_csv_impl
+    pydf = PyDataFrame.read_csv(
+        source,
+    ...<28 lines>...
+        schema=schema,
+    )
+FileNotFoundError: No such file or directory (os error 2): users.csv
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:24:54 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:31:37 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Data loaded successfully.
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Data cleaning and transformation complete.
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Transformed data saved to files successfully.
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:31:38 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Users data cleaned successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Transactions data cleaned successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 2
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Daily sales table created successfully. Total records: 1
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Data loaded successfully.
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Data cleaning and transformation complete.
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Transformed data saved to files successfully.
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Dimension tables created successfully.
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 3
+2026-04-02 19:33:45 | sales_project.dags.tables | INFO | Fact table created successfully. Total records: 1
