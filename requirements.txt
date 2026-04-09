@@ -1,6 +1,6 @@
 polars==1.6.0
 python-dotenv~=1.0.1
-requests~=2.32.3
+requests~=2.33.1
 numpy~=2.3.3
 trio~=0.22.2
 idna~=3.4
